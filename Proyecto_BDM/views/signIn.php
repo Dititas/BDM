@@ -113,8 +113,8 @@
 						<div class="mb-2 input-group ">
   							<select class="form-select bg-dark-x text-light border-0" id="inputSelectRol">
     							<option value="0" selected>Elige una opción...</option>
-    							<option value="1">Maestro</option>
-    							<option value="2">Alumno</option>
+    							<option value="vendedor">Vendedor</option>
+    							<option value="comprador">Comprador</option>
   							</select>
 						</div>
 						<span id="textWarningSelectRol" class="font-weight-bold mb-4 colorWarning"></span>
