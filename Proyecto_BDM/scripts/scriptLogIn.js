@@ -1,4 +1,61 @@
-const nextButton = document.getElementById('nextBtn');
+const emailText = document.getElementById('emailInput');
+const passwordText = document.getElementById('passInput');
+
+const btnLogIn = document.getElementById('nextBtn');
+
+window.onload = function(){
+	btnLogIn.disabled = true;
+}
+
+setInterval(function(){
+	activateBtnLogIn();
+},500)
+
+(function(){
+	const formLogIn = document.getElementById('loginForm');
+	formLogIn.onsubmit = function(e){
+		
+	}
+})();
+
+function activateBtnLogIn(){
+	if(validateEmail() && validatePassword()){
+		btnLogIn.disabled = false;
+	}else{
+		btnLogIn.disabled = true;
+	}
+}
+
+function validateEmail(){
+	const message = document.getElementById('textWarningEmail');
+	emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+
+	if(emailText.value !== ""){
+		if(emailRegex.test(emailText.value)){
+			message.innerText = "";
+			return true;
+		}else{
+			message.innerText = "Correo no válido";
+			return false;
+		}
+	}
+}
+
+function validatePassword(){
+	const message = document.getElementById('textWarningPass');
+	var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,30}$/;	
+
+	if(passText.value !== ""){
+		if(passwordRegex.test(passText.value)){
+			message.innerText = "";
+			return true;
+		}else{
+			message.innerText = "La contraseña debe contener lo siguiente: 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial";
+			return false;
+		}
+	}
+}
+/* const nextButton = document.getElementById('nextBtn');
 let isPassValid = false;
 let isEmailValid = false;
 
@@ -91,26 +148,5 @@ document.querySelector(".passText").addEventListener('input', function(){
 			}
 		}		
 		xhr.send(formData);
-		/*xhr.onreadystatechange = function() {
-			console.log(xhr.readyState);
-			if(xhr.readyState == XMLHttpRequest.DONE) {
-				if(xhr.status == 200){
-					console.log(xhr.response);
-					try{
-						let res = JSON.parse(xhr.response);
-						if(res.suscces != true) return;
-						alert(res.msg);
-						window.location.replace("./../../index.php");//CAMBIAR AL CONTROLADOR QUE TE TRAE LOS PRODUCTOS						
-					}catch(error){
-						console.error("Ha ocurrido un error: " + error);
-					}
-				}else{
-					console.error("La respuesta del servidor está vacía");
-				}
-			}else{
-				console.error("Ha ocurrido un error en la solicitud: " + xhr.status);
-			}
-		}
-		xhr.send(formData);*/
 	}
-})();
+})(); */

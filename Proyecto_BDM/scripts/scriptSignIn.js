@@ -14,7 +14,7 @@ window.onload = function(){
 }
 
 setInterval(function(){
-	activateBtnSignIn();
+	activateBtnSignUp();
 }, 500);
 
 (function(){
@@ -67,7 +67,7 @@ setInterval(function(){
 	}
 })();
 
-function activateBtnSignIn(){
+function activateBtnSignUp(){
 	if(onlyLetters() && somethingSelected() && validateDate() && validatePicture() && validatePassword() && validateEmail() && somethingSelectedRol()){
 		btnUpload.disabled = false;
 	}else{
@@ -182,7 +182,7 @@ function validatePassword(){
 			message.innerText = "";
 			return true;
 		}else{
-			message.innerText = "Las contraseña debe contener lo siguiente: 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial";
+			message.innerText = "La contraseña debe contener lo siguiente: 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial";
 			return false;
 		}
 	}
