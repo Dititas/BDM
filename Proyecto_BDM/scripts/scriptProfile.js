@@ -65,7 +65,7 @@ setInterval(function(){
 							let res = JSON.parse(xhr.response);
 							if(res.success != true){
 								alert(res.msg);
-  			        return;
+  			        			return;
 							}else{
 								//SI SE PUDO CAMBIAR LA INFO
 								alert(res.msg);

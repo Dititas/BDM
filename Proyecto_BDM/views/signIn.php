@@ -62,8 +62,8 @@
   						<label for="exampleInputEmail1" class="form-label font-weight-bold">Nombre y Apellido</label>
 						<div class="mb-1 input-group">
 
-  							<input type="text" aria-label="First name" placeholder="Ingresa tu Nombre" class="form-control bg-dark-x text-light border-0" id="nameInput" onkeypress="validarSoloLetras()">
-  							<input type="text" aria-label="Last name" placeholder="Ingresa tu Apellido" class="form-control bg-dark-x text-light border-0 " id="lastNameInput" onkeyup="validarSoloLetras()"> 				
+  							<input type="text" aria-label="First name" placeholder="Ingresa tu Nombre" class="form-control bg-dark-x text-light border-0" id="nameInput" >
+  							<input type="text" aria-label="Last name" placeholder="Ingresa tu Apellido" class="form-control bg-dark-x text-light border-0 " id="lastNameInput"> 				
 						</div>
 
 						<span id="textWarningName" class="font-weight-bold mb-2 colorWarning"></span>
@@ -99,13 +99,13 @@
 
   						<div class="mb-4">
     						<label for="exampleInputEmail1" class="form-label font-weight-bold">Correo</label>
-    						<input type="email" class="form-control bg-dark-x text-light border-0 mb-1 emailText" placeholder="Ingresa tu Correo" oninput="validarEmail()" id="inputEmail" aria-describedby="emailHelp">
+    						<input type="email" class="form-control bg-dark-x text-light border-0 mb-1 emailText" placeholder="Ingresa tu Correo" id="inputEmail" aria-describedby="emailHelp">
     						<span id="textWarningEmail" class="font-weight-bold colorWarning mb-2"></span>  						
   						</div>
 
   						<div class="mb-4">
     						<label for="exampleInputPassword1" class="form-label font-weight-bold">Contraseña</label>
-    						<input type="password" class="form-control bg-dark-x text-light border-0 mb-2 passText" oninput="validarPass()" placeholder="Ingresa tu Contraseña" id="inputPass">
+    						<input type="password" class="form-control bg-dark-x text-light border-0 mb-2 passText" placeholder="Ingresa tu Contraseña" id="inputPass">
     						<span id="textWarningPass" class="font-weight-bold colorWarning mb-2"></span>    
   						</div>
 
