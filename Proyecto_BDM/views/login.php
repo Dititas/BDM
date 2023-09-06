@@ -64,7 +64,7 @@
 				<div class="mx-lg-4 py-lg-4 p-5">
 					<h1 class="font-weight-bold text-center mb-4">Bienvenido</h1>
 
-					<form class="mb-5" id="loginForm">
+					<form class="mb-5" id="loginForm" action="../index.php">
   						<div class="mb-4">
     						<label for="exampleInputEmail1" class="form-label font-weight-bold">Correo</label>
     						<input type="email" class="form-control bg-dark-x text-light border-0 emailText mb-2" placeholder="Ingresa tu Correo" id="emailInput" aria-describedby="emailHelp">

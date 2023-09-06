@@ -57,7 +57,7 @@
 				<div class="mx-lg-4 py-lg-4 p-5">
 					<h1 class="font-weight-bold text-center mb-4">Registrarse</h1>
 					
-					<form class="mb-5" method="post" id="registerForm" enctype="multipart/form-data">
+					<form class="mb-5" method="post" action="login.php" id="registerForm" enctype="multipart/form-data">
 
   						<label for="exampleInputEmail1" class="form-label font-weight-bold">Nombre y Apellido</label>
 						<div class="mb-1 input-group">

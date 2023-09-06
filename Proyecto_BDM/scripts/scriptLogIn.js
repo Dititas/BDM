@@ -45,8 +45,8 @@ function validatePassword(){
 	const message = document.getElementById('textWarningPass');
 	var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,30}$/;	
 
-	if(passText.value !== ""){
-		if(passwordRegex.test(passText.value)){
+	if(passwordText.value !== ""){
+		if(passwordRegex.test(passwordText.value)){
 			message.innerText = "";
 			return true;
 		}else{

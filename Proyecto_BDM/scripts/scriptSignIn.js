@@ -20,7 +20,7 @@ setInterval(function(){
 (function(){
 	const formSignUp = document.getElementById('updateProfile');
 	formSignUp.onsubmit = function(e){
-		e.preventDefault();
+		/* e.preventDefault();
 		const formData = new FormData();
 		formData.append('name', nameText.value.trim());
 		formData.append('lastname', lastNameText.value.trim());
@@ -62,7 +62,7 @@ setInterval(function(){
 				}
 			}
 		}
-		xhr.send(formData);	
+		xhr.send(formData);	 */
 
 	}
 })();

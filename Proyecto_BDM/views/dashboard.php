@@ -2,38 +2,8 @@
 <html>
 <head>
 	<?php
-	include_once (__DIR__ ."./../bootstrap.php"); 
-	include_once(__DIR__ . "./../backend/utils/dbConnection.php");
-
-
-	
-	$activeSesion;
-	$isSessionActive;
-	$urlImagen;
-
-	if(isset($_SESSION['rolUser']) && isset($_SESSION['AUTH'])){
-		$imagenCodificada;
-		$activeSesion = $_SESSION['AUTH'];
-		if($_SESSION['rolUser'] == 'maestro'){
-			$isSessionActive = 1;
-			$imagenCodificada = base64_encode($activeSesion["picture_userInstructor"]);
-			$urlImagen = 'data:image/jpeg;base64,' . $imagenCodificada;
-		}else if($_SESSION['rolUser'] == 'alumno'){
-			$isSessionActive = 2;
-			$imagenCodificada = base64_encode($activeSesion["picture_userestudiante"]);
-			$urlImagen = 'data:image/jpeg;base64,' . $imagenCodificada;
-		}else if($_SESSION['rolUser'] == 'admin'){
-			$isSessionActive = 3;
-		}
-		
-
-		
-	}else{
-		$isSessionActive = 0;
-	}
-
-	$db = new dbConnection();
-	 ?>
+		include_once (__DIR__ ."./../bootstrap.php"); 	
+	?>
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,75 +59,17 @@
 					</form>
 					
 				</li>
-				<?php
-					if($isSessionActive != 0 && $isSessionActive != 3){
-					
-				?>
-				<li>
-					<form action="../index.php">
-						<button type="submit" class="bg-dark border-0">
-							<i class='bx bxs-book-content'></i>
-							<span class="link_name">Mis Cursos</span>
-						</button>
-					</form>
-					
-				</li>
-
-				<li>
-					<form action="../index.php">
-						<button type="submit" class="bg-dark border-0">
-							<i class='bx bxs-chat'></i>
-							<span class="link_name">Chats</span>
-						</button>
-					</form>
-					
-				</li>
 
 				<li>
 					<form action="./views/myProfile.php">
 						<button type="submit" class="bg-dark border-0">
-							<i class='bx bxs-user'></i>
-							<span class="link_name">Mi Perfil</span>
-						</button>
-					</form>					
-				</li>
-
-				<?php
-					}
-					if($isSessionActive === 3){
-				?>
-				<li>
-					<form action="../index.php">
-						<button type="submit" class="bg-dark border-0">
-							<i class='bx bxs-user'></i>
-							<span class="link_name">Usuarios</span>
-						</button>
-					</form>					
-				</li>
-
-				<li>
-					<form action="../index.php">
-						<button type="submit" class="bg-dark border-0">
-							<i class='bx bxs-chat'></i>
-							<span class="link_name">Comentarios</span>
+							<i class='bx bxs-category-alt'></i>
+							<span class="link_name">Mi perfil</span>
 						</button>
 					</form>
 					
 				</li>
 
-				<li>
-					<form action="../views/myProfile.php">
-						<button type="submit" class="bg-dark border-0">
-							<i class='bx bxs-report'></i>
-							<span class="link_name">Reportes</span>
-						</button>
-					</form>					
-				</li>
-				<?php
-					}
-
-					if($isSessionActive === 0){					
-				?>
 				<li>			
 					<div class="profile-details">
 						<div class="profile-content">
@@ -175,69 +87,6 @@
 						
 					</div>
 				</li>
-				<?php
-					}else if($isSessionActive === 1){				
-				?>
-				<li>			
-					<div class="profile-details">
-						<div class="profile-content">
-							<img src="<?php echo $urlImagen;?>" alt="FotoDePerfil">
-						</div>				
-						<div class="name-job">
-							<div class="profile_name"><?php echo $activeSesion["name_userInstructor"]; ?></div>
-							<div class="rol">Profesor</div>
-						</div>
-						<form action="./backend/controllers/closeSession.php">
-							<button type="submit" class="bg-dark-x border-0">
-								<i class='bx logout bxs-log-out'></i>
-							</button>						
-						</form>
-						
-					</div>
-				</li>
-				<?php
-					}else if($isSessionActive === 2){					
-				?>
-				<li>			
-					<div class="profile-details">
-						<div class="profile-content">
-							<img src="<?php echo $urlImagen ?>" alt="FotoDePerfil">
-						</div>				
-						<div class="name-job">
-							<div class="profile_name"><?php echo $activeSesion["name_userestudiante"];//NOMBRE DEL ALUMNO ?></div>
-							<div class="rol">Alumno</div>
-						</div>
-						<form action="./backend/controllers/closeSession.php">
-							<button type="submit" class="bg-dark-x border-0">
-								<i class='bx logout bxs-log-out'></i>
-							</button>						
-						</form>
-						
-					</div>
-				</li>
-				<?php
-					}else if($isSessionActive === 3){					
-				?>
-				<li>			
-					<div class="profile-details">
-						<div class="profile-content">
-							<img src="./img/profilePicture.png" alt="FotoDePerfil">
-						</div>				
-						<div class="name-job">
-							<div class="profile_name"><?php echo "ADMIN";//NOMBRE DEL ALUMNO ?></div>
-							<div class="rol">Admin</div>
-						</div>
-						<form action="./backend/controllers/closeSession.php">
-							<button type="submit" class="bg-dark-x border-0">
-								<i class='bx logout bxs-log-out'></i>
-							</button>						
-						</form>
-						
-					</div>
-				</li>
-				<?php
-					}
-				?>
 			</ul>
 	</div>
 
