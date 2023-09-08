@@ -63,7 +63,7 @@
 				<li>
 					<form action="./views/myProfile.php">
 						<button type="submit" class="bg-dark border-0">
-							<i class='bx bxs-category-alt'></i>
+							<i class='bx bxs-user'></i>
 							<span class="link_name">Mi perfil</span>
 						</button>
 					</form>
