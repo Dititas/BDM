@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<?php  include_once (__DIR__ ."./../bootstrap.php"); ?>
+	<?php include_once(__DIR__ . "./../bootstrap.php"); ?>
 	<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="./../css/styles.css">
+	<link rel="stylesheet" type="text/css" href="./../css/styles.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;600&display=swap" rel="stylesheet">
 
-    <title>Login</title> 
+	<title>Login</title>
 
 </head>
-<body class="bg-dark">
 
-	
+<body class="bg-dark">
 
 	<section>
 		<div class="row g-0 d-flex align-items-center">
 			<div class="col-lg-7 d-none d-lg-block">
 				<div id="carouselExampleCaptions" class="carousel slide">
-  					<div class="carousel-indicators">
-    					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  					</div>
-  					<div class="carousel-inner">
-    					<div class="carousel-item img-1 min-vh-100 active">			
-      							<div class="carousel-caption d-none d-md-block">
-        							<h5 class="font-weight-bold text-muted">Aprende con los diferentes cursos que tenemos disponibles</h5>
-      							</div>
-    					</div>
-    					<div class="carousel-item img-2 min-vh-100 ">				
-      							<div class="carousel-caption d-none d-md-block">
-        							<h5 class="font-weight-bold text-muted">Con disponibilidad 24/7</h5>
-      							</div>
-    						</div>
-    						<div class="carousel-item img-3 min-vh-100 ">
-      							
-      								<div class="carousel-caption d-none d-md-block">
-        							<h5 class="font-weight-bold text-muted">Estudia a tu tiempo y mejora tus habilidades </h5>
-      							</div>
-    						</div>
-  						</div>
-  						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    						<span class="visually-hidden">Previous</span>
-  						</button>
-  						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-    						<span class="visually-hidden">Next</span>
-  						</button>
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					</div>
+					<div class="carousel-inner">
+						<div class="carousel-item img-1 min-vh-100 active">
+							<div class="carousel-caption d-none d-md-block">
+								<h5 class="font-weight-bold text-muted">Aprende con los diferentes cursos que tenemos disponibles</h5>
+							</div>
+						</div>
+						<div class="carousel-item img-2 min-vh-100 ">
+							<div class="carousel-caption d-none d-md-block">
+								<h5 class="font-weight-bold text-muted">Con disponibilidad 24/7</h5>
+							</div>
+						</div>
+						<div class="carousel-item img-3 min-vh-100 ">
+
+							<div class="carousel-caption d-none d-md-block">
+								<h5 class="font-weight-bold text-muted">Estudia a tu tiempo y mejora tus habilidades </h5>
+							</div>
+						</div>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
 				</div>
 			</div>
 
@@ -65,20 +65,20 @@
 					<h1 class="font-weight-bold text-center mb-4">Bienvenido</h1>
 
 					<form class="mb-5" id="loginForm" action="../index.php">
-  						<div class="mb-4">
-    						<label for="exampleInputEmail1" class="form-label font-weight-bold">Correo</label>
-    						<input type="email" class="form-control bg-dark-x text-light border-0 emailText mb-2" placeholder="Ingresa tu Correo" id="emailInput" aria-describedby="emailHelp">
-    						<span id="textWarningEmail" class="font-weight-bold colorWarning"></span>  
+						<div class="mb-4">
+							<label for="exampleInputEmail1" class="form-label font-weight-bold">Correo</label>
+							<input type="email" class="form-control bg-dark-x text-light border-0 emailText mb-2" placeholder="Ingresa tu Correo" id="emailInput" aria-describedby="emailHelp">
+							<span id="textWarningEmail" class="font-weight-bold colorWarning"></span>
 
-  						</div>
-  						<div class="mb-4">
-    						<label for="exampleInputPassword1" class="form-label font-weight-bold">Contraseña</label>
-    						<input type="password" class="form-control bg-dark-x text-light border-0 mb-3 passText" placeholder="Ingresa tu Contraseña" id="passInput">
-    						<span id="textWarningPass" class="font-weight-bold colorWarning"></span>  
-  						</div>
-  						
-  						<button type="submit" id="nextBtn" class="btn btn-primary w-100 mb-4">Iniciar sesión</button>
-  						
+						</div>
+						<div class="mb-4">
+							<label for="exampleInputPassword1" class="form-label font-weight-bold">Contraseña</label>
+							<input type="password" class="form-control bg-dark-x text-light border-0 mb-3 passText" placeholder="Ingresa tu Contraseña" id="passInput">
+							<span id="textWarningPass" class="font-weight-bold colorWarning"></span>
+						</div>
+
+						<button type="submit" id="nextBtn" class="btn btn-primary w-100 mb-4">Iniciar sesión</button>
+
 					</form>
 
 					<!-- <p class="font-weight-bold texted-center text-muted">O Inicia sesión con</p>
@@ -107,7 +107,8 @@
 
 	<script type="text/javascript" src="./../scripts/scriptLogIn.js"></script>
 
-	
+
 
 </body>
+
 </html>

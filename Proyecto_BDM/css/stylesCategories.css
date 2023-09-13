@@ -1,0 +1,21 @@
+*{
+    color: white !important;
+}
+a{
+    text-decoration: none;
+}
+.dashboard-main{
+    padding-left: 4vh;
+}
+
+.column-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.column-list li {
+    padding: 10px;
+}

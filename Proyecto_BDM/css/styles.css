@@ -1,52 +1,60 @@
-:root{
+:root {
 	--dark: #051923;
---dark-a: #212529;
+	--dark-a: #212529;
 	--light: #ffffff;
 	--light-a: #7D919B;
 }
 
-*::-webkit-scrollbar{
+*::-webkit-scrollbar {
 	display: none;
 }
 
 
 
-body{	
+body {
+	background-color: var(--dark-a);
 	font-weight: 300;
 	color: var(--light) !important;
 	font-family: 'League Spartan', sans-serif;
+	height: 100vh;
 }
 
-.bg-dark { background-color: var(--dark) !important; }
-.bg-dark-x { background-color: var(--dark-a) !important; }
+.bg-dark {
+	background-color: var(--dark) !important;
+}
+
+.bg-dark-x {
+	background-color: var(--dark-a) !important;
+}
 
 
 
 
-.form-control, .btn{
+.form-control,
+.btn {
 	min-height: 3.125rem;
 	line-height: initial;
 }
 
-.img-1{
+.img-1 {
 	background-image: url("./../img/firstImage.png");
 	background-size: cover;
 	background-position: center;
 }
 
-.img-2{
+.img-2 {
 	background-image: url("./../img/secondImage.png");
 	background-size: cover;
 	background-position: center;
 }
 
-.img-3{
+.img-3 {
 	background-image: url("./../img/thirdImage.png");
 	background-size: cover;
 	background-position: center;
 }
 
-h5{	
+h5 {
 	font-weight: bold;
 }
 
@@ -73,32 +81,31 @@ h5{
 	text-align: center;
 }*/
 
-input[type="file"]::file-selector-button{
+input[type="file"]::file-selector-button {
 	color: #f8f9fa;
-    background-color: var(--dark);
-    border-color: #f8f9fa;
-    padding: 5px 10px 5px 10px;
-    border-radius: 10%;
+	background-color: var(--dark);
+	border-color: #f8f9fa;
+	padding: 5px 10px 5px 10px;
+	border-radius: 10%;
 }
 
 input[type="file"]::file-selector-button:hover {
-  background-color: #f8f9fa;
-  border: 2px solid #f8f9fa;
-  color: var(--dark);
+	background-color: #f8f9fa;
+	border: 2px solid #f8f9fa;
+	color: var(--dark);
 }
 
 .form__input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1) !important;
-    border-radius: 50%;
-    padding: 4px;
-  }
+	filter: invert(1) !important;
+	border-radius: 50%;
+	padding: 4px;
+}
 
- .custom-file-input{
- 	background-color: var(--dark-a) !important;
- 	padding-right: 18rem;
- }
+.custom-file-input {
+	background-color: var(--dark-a) !important;
+	padding-right: 18rem;
+}
 
- .colorWarning{
- 	color: #B22222 !important;
- }
-
+.colorWarning {
+	color: #B22222 !important;
+}

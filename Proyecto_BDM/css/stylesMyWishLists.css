@@ -1,0 +1,45 @@
+*{
+    color: white !important;
+}
+.table-container {
+    text-align: left;
+}
+
+table {
+    font-size: 25px;
+}
+
+table td,
+table th {
+    vertical-align: middle;
+}
+
+.icon-large {
+    font-size: 35px;
+    vertical-align: middle;
+}
+
+.card-img-top {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+}
+
+.modal-title,
+.modal-body {
+    color: black !important;
+}
+
+.input {
+    color: black !important;
+}
+
+table>img {
+    width: 150px;
+    object-fit: contain;
+}
+
+.form-group label {
+    color: black;
+}
+

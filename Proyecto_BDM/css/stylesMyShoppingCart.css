@@ -1,0 +1,29 @@
+*{
+    color: white !important;
+}
+.wishlist-container {
+    background-color: var(--dark-a);
+    margin-top: 10px;
+    text-align: center;
+}
+.table-container {
+    text-align: left;
+}
+table {
+    font-size: 25px;
+}
+table td, table th {
+    vertical-align: middle;
+}
+.icon-large{
+    font-size: 35px;
+    vertical-align: middle;
+}
+.card-img-top{
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+}
+.modal-title,.modal-body{
+color: black !important;
+}
