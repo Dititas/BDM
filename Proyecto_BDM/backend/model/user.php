@@ -17,6 +17,10 @@ class User{
     }
 
     public function checkOneUserExists(){
+
+    }
+
+    public function selectAllUsers(){
         
     }
 }
