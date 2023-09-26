@@ -278,7 +278,7 @@ BEGIN
 END $$
 DELIMITER ;
 
--- #CALL updateUserByUser(1, 'Contraseniax2','Nombre', 'Apellidox2', NULL, NULL, '', 0);
+/* #CALL updateUserByUser(1, 'Contraseniax2','Nombre', 'Apellidox2', NULL, NULL, '', 0);*/
 
 DROP PROCEDURE IF EXISTS `updateUserByAdmin`;
 DELIMITER $$
@@ -330,7 +330,28 @@ BEGIN
     END IF;    
 END $$
 DELIMITER ;
---#CALL selectOneUser('nuevo_usuario@example.com');
+/*#CALL selectOneUser('nuevo_usuario@example.com');*/
+
+DROP PROCEDURE IF EXISTS `checkOneUserExists`;
+DELIMITER $$
+CREATE PROCEDURE `checkOneUserExists`(
+    IN _identification   VARCHAR(60)
+)
+BEGIN
+    DECLARE _userCount INT;
+
+    SELECT COUNT(*) INTO _userCount
+    FROM `bytesandbits`.`User`
+    WHERE `user_email` = _identification OR `user_userName` = _identification;
+
+    IF _userCount = 1 THEN
+        SELECT 'ALREADY EXISTS' AS response;
+    ELSE
+        SELECT 'NOT EXISTS' AS response;
+    END IF;    
+END $$
+DELIMITER ;
+/*CALL checkOneUserExists('nuevo_usuario@exmple.com');*/
 
 DROP PROCEDURE IF EXISTS `selectAllUser`;
 DELIMITER $$
