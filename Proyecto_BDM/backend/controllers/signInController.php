@@ -1,5 +1,17 @@
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    require_once "../backend/utils/dbConnection.php";
+    require_once "../backend/model/user.php";
+
+    if( isset($_POST['email'])      && isset($_POST['username'])    && 
+        isset($_POST['password'])   && isset($_POST['name'])        && 
+        isset($_POST['lastname'])   && isset($_POST['birthdate'])   && 
+        isset($_FILES['image'])     && isset($_POST['gender'])      &&
+        isset($_POST['isPublic']    && isset($_POST['rol']))){
+            
+    }
+}
+/* if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	require_once "./../../backend/utils/dbConnection.php";
 	require_once "./../../backend/model/instructor.php";
 	require_once "./../../backend/model/alumno.php";  
@@ -47,5 +59,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo json_encode($json_response);
     exit();
 }
-
+ */
 ?>
