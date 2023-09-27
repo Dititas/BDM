@@ -53,8 +53,8 @@
 .sidebar .logo-details img {
 	font-size: 30px;
 	color: #fff;
-	height: 50px;
-	min-width: 10px;
+	height: 200px !important;
+	width: 200px !important;
 	text-align: center;
 	line-height: 50px;
 }

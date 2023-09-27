@@ -6,7 +6,7 @@
 }
 
 *::-webkit-scrollbar {
-	display: none;
+	 display: none;
 }
 
 
@@ -17,6 +17,7 @@ body {
 	color: var(--light) !important;
 	font-family: 'League Spartan', sans-serif;
 	height: 100vh;
+
 }
 
 .bg-dark {
@@ -109,3 +110,4 @@ input[type="file"]::file-selector-button:hover {
 .colorWarning {
 	color: #B22222 !important;
 }
+

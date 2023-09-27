@@ -30,20 +30,14 @@
 					</div>
 					<div class="carousel-inner">
 						<div class="carousel-item img-1 min-vh-100 active">
-							<div class="carousel-caption d-none d-md-block">
-								<h5 class="font-weight-bold text-muted">Aprende con los diferentes cursos que tenemos disponibles</h5>
-							</div>
+							
 						</div>
 						<div class="carousel-item img-2 min-vh-100 ">
-							<div class="carousel-caption d-none d-md-block">
-								<h5 class="font-weight-bold text-muted">Con disponibilidad 24/7</h5>
-							</div>
+							
 						</div>
 						<div class="carousel-item img-3 min-vh-100 ">
 
-							<div class="carousel-caption d-none d-md-block">
-								<h5 class="font-weight-bold text-muted">Estudia a tu tiempo y mejora tus habilidades </h5>
-							</div>
+							
 						</div>
 					</div>
 					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -59,7 +53,7 @@
 
 			<div class="col-lg-5  d-flex flex-column ">
 				<div class="px-lg-5 pt-lg-4 pb-lg-3 p-4 text-center">
-					<img src="./../img/Learn Hub NEGRO Chico.png" class="img-fluid" width="250" height="250">
+					<img src="./../img/logo.jpg" class="" width="250" height="250">
 				</div>
 				<div class="mx-lg-4 py-lg-4 p-5">
 					<h1 class="font-weight-bold text-center mb-4">Bienvenido</h1>

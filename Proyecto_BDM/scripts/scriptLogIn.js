@@ -179,7 +179,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	loginForm.addEventListener("submit", function (event) {
 		event.preventDefault();
-		alert("Todo correcto");
 		window.location.href = "./dashboard.php";
 	});
 });

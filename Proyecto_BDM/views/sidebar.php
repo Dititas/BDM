@@ -1,7 +1,6 @@
 <div class="sidebar">
     <div class="logo-details">
-        <img src="../img/Learn-Hub_Figura.png" class="imgSideBar">
-        <span class="logo_name">Learn-Hub</span>
+        <img src="../img/logo.jpg" class="imgSideBar">
     </div>
     <ul class="nav-links">
         <li>
