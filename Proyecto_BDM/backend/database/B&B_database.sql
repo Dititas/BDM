@@ -309,9 +309,7 @@ BEGIN
     FROM `bytesandbits`.`User`
     WHERE `user_email` = _identification OR `user_userName` = _identification;
 
-    IF _userCount = 0 THEN
-        SELECT 'NOT FOUND' AS response;
-    ELSE
+    IF _userCount = 1 THEN
         SELECT 
             `user_id`,       
             `user_email`,    
@@ -330,7 +328,7 @@ BEGIN
     END IF;    
 END $$
 DELIMITER ;
-/*#CALL selectOneUser('nuevo_usuario@example.com');*/
+/*#CALL selectOneUser('nuevo_usuario');*/
 
 DROP PROCEDURE IF EXISTS `checkOneUserExists`;
 DELIMITER $$
@@ -351,7 +349,29 @@ BEGIN
     END IF;    
 END $$
 DELIMITER ;
-/*CALL checkOneUserExists('nuevo_usuario@exmple.com');*/
+/*CALL checkOneUserExists('nuevo_usuario');*/
+
+DROP PROCEDURE IF EXISTS `checkOneUserEnabled`;
+DELIMITER $$
+CREATE PROCEDURE `checkOneUserEnabled`(
+    IN _identification   VARCHAR(60)
+)
+BEGIN
+    DECLARE _userIsEnable BIT;
+
+    SELECT `user_isEnable` INTO _userIsEnable
+    FROM `bytesandbits`.`User`
+    WHERE `user_email` = _identification OR `user_userName` = _identification;
+
+    IF _userIsEnable = 1 THEN
+        SELECT 'ENABLED' AS response;
+    ELSE
+        SELECT 'DISABLED' AS response;
+    END IF;    
+END $$
+DELIMITER ;
+
+/*CALL checkOneUserEnabled('nuevo_usuario@eample.com');*/
 
 DROP PROCEDURE IF EXISTS `selectAllUser`;
 DELIMITER $$
