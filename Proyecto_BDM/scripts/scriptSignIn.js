@@ -16,11 +16,11 @@ window.onload = function(){
 setInterval(function(){
 	activateBtnSignUp();
 }, 500);
-
+/*
 (function(){
 	const formSignUp = document.getElementById('updateProfile');
 	formSignUp.onsubmit = function(e){
-		/* e.preventDefault();
+		 e.preventDefault();
 		const formData = new FormData();
 		formData.append('name', nameText.value.trim());
 		formData.append('lastname', lastNameText.value.trim());
@@ -62,11 +62,11 @@ setInterval(function(){
 				}
 			}
 		}
-		xhr.send(formData);	 */
+		xhr.send(formData);	
 
 	}
 })();
-
+ */
 function activateBtnSignUp(){
 	if(onlyLetters() && somethingSelected() && validateDate() && validatePicture() && validatePassword() && validateEmail() && somethingSelectedRol()){
 		btnUpload.disabled = false;
