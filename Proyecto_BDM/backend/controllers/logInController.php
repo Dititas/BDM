@@ -1,5 +1,52 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
+	require_once "../backend/utils/dbConnection.php";
+    require_once "../backend/model/user.php";
+	if(isset($_POST['identity']) && isset($_POST['password'])){
+		$identity = $_POST['identity'];
+		$password = $_POST['password'];
+
+		$mysqli = dbConnection::connect();
+
+		$user = new User();
+		if($user->checkOneUserExists($mysqli, $identity)['response'] == 'ALREADY EXISTS'){
+			if($user->checkOneUserEnabled($mysqli, $identity)['response'] == 'ENABLED'){
+				$userlogged = $user->selectOneUser($mysqli, $identity);
+				if($userlogged != null){
+					if(password_verify($password, $userlogged['user_password'])){
+						session_start();
+						$_SESSION['AUTH'] = $userlogged;
+						$json_response = ["success" => true, "msg" => "Se ha iniciado sesión", "data" => json_encode($userlogged)];
+    					header('Content-Type: application/json');
+    					echo json_encode($json_response);
+    					exit();
+					}else{
+						$json_response = ["success" => false, "msg" => "Contraseña incorrecta, intente de nuevo"];
+            			header('Content-Type: application/json');
+            			echo json_encode($json_response);
+            			exit();
+					}					
+				}else{
+					$json_response = ["success" => false, "msg" => "Falló el inicio de sesión, intente de nuevo más tarde"];
+            		header('Content-Type: application/json');
+            		echo json_encode($json_response);
+            		exit();
+				}
+			}else{
+				$json_response = ["success" => false, "msg" => "Usuario inhabilitado, favor de contactarse con un administrador"];
+            	header('Content-Type: application/json');
+            	echo json_encode($json_response);
+            	exit();
+			}
+		}else{
+			$json_response = ["success" => false, "msg" => "Usuario inexistente, por favor crea una cuenta"];
+            header('Content-Type: application/json');
+            echo json_encode($json_response);
+            exit();
+		}
+	}
+}
+/* if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	require_once "./../../backend/utils/dbConnection.php";
 	require_once "./../../backend/model/instructor.php";
 	require_once "./../../backend/model/alumno.php";
@@ -122,5 +169,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     	exit();
 	}	
 }
-
+ */
 ?>

@@ -9,55 +9,48 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         isset($_FILES['image'])     && isset($_POST['gender'])      &&
         isset($_POST['isPublic']    && isset($_POST['rol']))){
             
-    }
-}
-/* if($_SERVER['REQUEST_METHOD'] == 'POST') {
-	require_once "./../../backend/utils/dbConnection.php";
-	require_once "./../../backend/model/instructor.php";
-	require_once "./../../backend/model/alumno.php";  
-    
+            $email = $_POST['email'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $name = $_POST['name'];
+            $lastname = $_POST['lastname'];
+            $birthdate = $_POST['birthdate'];
+            $gender = $_POST['gender'];
+            $isPublic = $_POST['isPublic'];
+            $rol = $_POST['rol'];            
+            $convertedImage = file_get_contents($_FILES['image']['tmp_name']);
 
-    if(isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['genero']) && isset($_POST['fechaNacimiento']) && isset($_POST['email']) && isset($_POST['pass']) && isset($_POST['rol']) && isset($_FILES['foto'])){
+            $mysqli = dbConnection::connect();
 
-        $nombre = $_POST['nombre'];
-        $apellido = $_POST['apellido'];
-        $genero = $_POST['genero'];
-        $fechaNacimiento = $_POST['fechaNacimiento'];
-        $email = $_POST['email'];
-        $pass = $_POST['pass'];
-        $rol = $_POST['rol'];
-
-        $foto = $_FILES['foto'];
-        $nombreFoto = $foto['name'];
-        $tipoFoto = $foto['type'];
-        $tamanoFoto = $foto['size'];
-        $tempFoto = $foto['tmp_name'];
-
-        $longblobdata = file_get_contents($tempFoto);       
-        $hashPass = password_hash($pass, PASSWORD_DEFAULT);
-
-         $mysqli = dbConnection::connect();
-
-        if($rol === "Maestro"){
-            $instructor = new Instructor();
-            $instructor->insertInstructor($mysqli, $nombre, $apellido, $genero, $fechaNacimiento, $longblobdata, $email, $hashPass);
-            $json_response = ["success" => true, "msg" => "Se ha creado el usuario Maestro"];
+            $newUser = new User();
+            if($newUser->checkOneUserExists($mysqli, $email)['response'] === "NOT EXISTS"  && $newUser->checkOneUserExists($mysqli, $username)['response'] === "NOT EXISTS"){
+                if($newUser->insertUser($mysqli, $email, $username, $encryptedPassword, $name, $lastname, $birthdate, $convertedImage, $gender, $isPublic, $rol)){
+                    $json_response = ["success" => true, "msg" => "Agregado con éxito"];
+                    header('Content-Type: application/json');
+                    echo json_encode($json_response);
+                    exit();
+                }else{
+                    $json_response = ["success" => false, "msg" => "Algo falló, intente más tarde"];
+                    header('Content-Type: application/json');
+                    echo json_encode($json_response);
+                    exit();
+                }
+            }else{
+                $json_response = ["success" => false, "msg" => "Email o Usuario ya existente"];
+                header('Content-Type: application/json');
+                echo json_encode($json_response);
+                exit();
+            }
+            $json_response = ["success" => false, "msg" => "No entró a lsd validaciones"];
             header('Content-Type: application/json');
             echo json_encode($json_response);
             exit();
-        }else if($rol === "Alumno"){
-            $alumno = new Alumno();
-            $alumno->insertEstudiante($mysqli, $nombre, $apellido, $genero, $fechaNacimiento, $longblobdata, $email, $hashPass);
-            $json_response = ["success" => true, "msg" => "Se ha creado el usuario Alumno"];
-            header('Content-Type: application/json');
-            echo json_encode($json_response);
-            exit();                 
-        }
+    }else{
+        $json_response = ["success" => false, "msg" => "Verifique sus datos, están corruptos"];
+        header('Content-Type: application/json');
+        echo json_encode($json_response);
+        exit();
     }
-    $json_response = ["success" => false, "msg" => "No se ha creado el usuario"];
-    header('Content-Type: application/json');
-    echo json_encode($json_response);
-    exit();
 }
- */
 ?>
