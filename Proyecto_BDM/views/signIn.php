@@ -104,21 +104,31 @@
 							<span id="textWarningEmail" class="font-weight-bold colorWarning mb-2"></span>
 						</div>
 
-						<div class="mb-4">
-							<label for="exampleInputPassword1" class="form-label font-weight-bold">Contraseña</label>
-							<input type="password" class="form-control bg-dark-x text-light border-0 mb-2 passText" placeholder="Ingresa tu Contraseña" id="inputPass">
-							<span id="textWarningPass" class="font-weight-bold colorWarning mb-2"></span>
+						<label for="exampleInputEmail1" class="form-label font-weight-bold">Usuario y Contraseña</label>
+						<div class="mb-1 input-group">
+							<input type="text" aria-label="Username" placeholder="Ingresa tu Usuario" class="form-control bg-dark-x text-light border-0" id="inputUsuario">
+							<input type="password" aria-label="Password" placeholder="Ingresa tu Contraseña" class="form-control bg-dark-x text-light border-0 " id="inputPass">
 						</div>
+						<span id="textWarningUsuario" class="font-weight-bold colorWarning mb-2"></span>
+						<span id="textWarningPass" class="font-weight-bold colorWarning mb-2"></span>
 
 						<label for="exampleInputEmail1" class="form-label font-weight-bold">Rol</label>
 						<div class="mb-2 input-group ">
 							<select class="form-select bg-dark-x text-light border-0" id="inputSelectRol">
 								<option value="0" selected>Elige una opción...</option>
-								<option value="vendedor">Vendedor</option>
-								<option value="comprador">Comprador</option>
+								<option value="seller">Vendedor</option>
+								<option value="buyer">Comprador</option>
 							</select>
 						</div>
 						<span id="textWarningSelectRol" class="font-weight-bold mb-4 colorWarning"></span>
+
+						<div class="changePassword mt-2">
+								<label class="custom-checkbox">
+									<input type="checkbox" id="checkbox" onchange="toggleInput()">
+									<span class="checkmark"></span>
+									¿Perfil Público?
+								</label>
+							</div>
 
 						<button type="submit" id="nextBtn" class="btn btn-primary w-100 mt-3" data-toggle="modal" data-target="#myModal">Registrarse</button>
 

@@ -111,3 +111,62 @@ input[type="file"]::file-selector-button:hover {
 	color: #B22222 !important;
 }
 
+.changePassword{
+	display: flex;
+	justify-content: center;
+}
+
+
+
+.custom-checkbox {
+  position: relative;
+  padding-left: 25px; /* Espacio para el checkbox */
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee; /* Color de fondo del checkbox */
+  border-radius: 0.2rem;
+}
+
+.custom-checkbox:hover input ~ .checkmark {
+  background-color: #ccc; /* Color de fondo del checkbox al pasar el cursor sobre él */
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #2196F3; /* Color de fondo del checkbox cuando está marcado */
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.custom-checkbox .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+

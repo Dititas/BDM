@@ -1,7 +1,7 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-	require_once "../backend/utils/dbConnection.php";
-    require_once "../backend/model/user.php";
+	require_once "../utils/dbConnection.php";
+    require_once "../model/user.php";
 	if(isset($_POST['identity']) && isset($_POST['password'])){
 		$identity = $_POST['identity'];
 		$password = $_POST['password'];
@@ -44,7 +44,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             echo json_encode($json_response);
             exit();
 		}
-	}
+	}else{
+        $json_response = ["success" => false, "msg" => "Verifique sus datos, están corruptos"];
+        header('Content-Type: application/json');
+        echo json_encode($json_response);
+        exit();
+    }
 }
 /* if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	require_once "./../../backend/utils/dbConnection.php";

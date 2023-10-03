@@ -2,7 +2,7 @@
     class dbConnection {
         static public function connect() {
             $host = "localhost";
-            $db = "learnHub";
+            $db = "BytesAndBits";
             $user = "root";
             $pass = "admin";
             try {

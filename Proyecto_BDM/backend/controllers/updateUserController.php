@@ -1,5 +1,56 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+		require_once "../utils/dbConnection.php";
+    	require_once "../model/user.php";
+
+		if(	isset($_POST['name'])        	&& 
+        	isset($_POST['lastname'])   	&& 
+			isset($_POST['birthdate'])  	&& 
+        	isset($_POST['gender'])      	&&
+        	isset($_POST['isPublic'])){
+				session_start();
+				$loggedUser = $_SESSION['AUTH'] ?? null;
+
+				$mysqli = dbConnection::connect();
+				$modifyUser = new User();
+
+				$name = $_POST['name'];
+				$lastname = $_POST['lastname'];
+				$birthdate = $_POST['birthdate'];
+				$gender = $_POST['gender'];
+				$isPublic = $_POST['isPublic'];
+
+				$password = $_POST['password'] ?? null;
+				$convertedImage = $_FILES['image']['tmp_name'] ?? null;
+
+				if($loggedUser != null){
+					if($modifyUser->updateUserByUser($mysqli, $loggedUser['user_id'], 
+						$password, $name, $lastname, $birthdate, $convertedImage, $gender, $isPublic)){
+							$json_response = ["success" => true, "msg" => "Los cambios se han efectuado"];
+							header('Content-Type: application/json');
+							echo json_encode($json_response);
+							exit();
+						}else{
+							$json_response = ["success" => false, "msg" => "No se pudieron efectuar los cambios"];
+							header('Content-Type: application/json');
+							echo json_encode($json_response);
+							exit();
+						}
+				}else{
+					$json_response = ["success" => false, "msg" => "No hay una sesión iniciada"];
+					header('Content-Type: application/json');
+					echo json_encode($json_response);
+					exit();
+				}				
+		}else{
+			$json_response = ["success" => false, "msg" => "Verifique sus datos, están corruptos"];
+			header('Content-Type: application/json');
+			echo json_encode($json_response);
+			exit();
+		}
+
+	}
+	/* if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		require_once "./../../backend/utils/dbConnection.php";
 		require_once "./../../backend/model/instructor.php";
 		require_once "./../../backend/model/alumno.php";
@@ -213,6 +264,6 @@
     		exit();
 		}
 	}
-
+ */
 
 ?>

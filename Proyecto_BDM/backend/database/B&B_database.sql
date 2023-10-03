@@ -24,7 +24,7 @@ CREATE TABLE `bytesandbits`.`User`(
     `user_image`        LONGBLOB NOT NULL,
     `user_gender`       VARCHAR(60) NOT NULL,
     `user_lastDate`     DATETIME NOT NULL DEFAULT NOW(),
-    `user_isPublic`     BIT NOT NULL,
+    `user_isPublic`     TINYINT NOT NULL,
     `user_isEnable`     BIT NOT NULL DEFAULT 1,
     `user_rol`          VARCHAR(60) NOT NULL,
     FOREIGN KEY (`user_rol`) REFERENCES `bytesandbits`.`rol`(`rol_name`)
@@ -210,7 +210,7 @@ CREATE PROCEDURE `insertUser`(
     IN _birthdate       DATE,
     IN _image           LONGBLOB,
     IN _gender          VARCHAR(60),
-    IN _isPublic        BIT,
+    IN _isPublic        TINYINT,
     IN _rol             VARCHAR(60)       
 )
 BEGIN
@@ -263,7 +263,7 @@ CREATE PROCEDURE `updateUserByUser`(
     IN _birthdate       DATE,
     IN _image           LONGBLOB,
     IN _gender          VARCHAR(60),
-    IN _isPublic        BIT  
+    IN _isPublic        TINYINT  
 )
 BEGIN
      UPDATE `bytesandbits`.`User` SET

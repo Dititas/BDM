@@ -48,7 +48,7 @@ class User{
     public function selectOneUser($_mysqli, $_identification){
         $query = "CALL selectOneUser(?);";
         try{
-            $stmt = $_mysqli->prepare($sql);
+            $stmt = $_mysqli->prepare($query);
             $stmt->execute(array($_identification));
             $result = $stmt->get_result();
             while($row = $result->fetch_assoc()){
@@ -59,13 +59,13 @@ class User{
             echo json_encode($response);
             return null;
         }
-        return null
+        return null;
     }
 
     public function checkOneUserExists($_mysqli, $_identification){
         $query = "CALL checkOneUserExists(?);";
         try{
-            $stmt = $_mysqli->prepare($sql);
+            $stmt = $_mysqli->prepare($query);
             $stmt->execute(array($_identification));
             $result = $stmt->get_result();
             while($row = $result->fetch_assoc()){
@@ -76,13 +76,13 @@ class User{
             echo json_encode($response);
             return null;
         }
-        return null
+        return null;
     }
 
     public function checkOneUserEnabled($_mysqli, $_identification){
         $query = "CALL checkOneUserEnabled(?);";
         try{
-            $stmt = $_mysqli->prepare($sql);
+            $stmt = $_mysqli->prepare($query);
             $stmt->execute(array($_identification));
             $result = $stmt->get_result();
             while($row = $result->fetch_assoc()){
@@ -93,13 +93,13 @@ class User{
             echo json_encode($response);
             return null;
         }
-        return null
+        return null;
     }
 
     public function selectAllUsers(){
         $query = "CALL selectAllUser();";
         try{
-            $stmt = $_mysqli->prepare($sql);
+            $stmt = $_mysqli->prepare($query);
             $stmt->execute();
             $result = $stmt->get_result();
             $users = array();
@@ -112,7 +112,7 @@ class User{
             echo json_encode($response);
             return null;
         }
-        return null
+        return null;
     }
 }
 ?>

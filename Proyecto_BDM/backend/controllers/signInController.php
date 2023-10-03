@@ -1,13 +1,13 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    require_once "../backend/utils/dbConnection.php";
-    require_once "../backend/model/user.php";
+    require_once "../utils/dbConnection.php";
+    require_once "../model/user.php";
 
     if( isset($_POST['email'])      && isset($_POST['username'])    && 
         isset($_POST['password'])   && isset($_POST['name'])        && 
         isset($_POST['lastname'])   && isset($_POST['birthdate'])   && 
         isset($_FILES['image'])     && isset($_POST['gender'])      &&
-        isset($_POST['isPublic']    && isset($_POST['rol']))){
+        isset($_POST['isPublic'])    && isset($_POST['rol'])){
             
             $email = $_POST['email'];
             $username = $_POST['username'];
@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $lastname = $_POST['lastname'];
             $birthdate = $_POST['birthdate'];
             $gender = $_POST['gender'];
-            $isPublic = $_POST['isPublic'];
+            $isPublic = $_POST['isPublic'];//filter_var($_POST['isPublic'], FILTER_VALIDATE_BOOLEAN);
             $rol = $_POST['rol'];            
             $convertedImage = file_get_contents($_FILES['image']['tmp_name']);
 

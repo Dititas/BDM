@@ -4,7 +4,6 @@
 <head>
 	<?php
 	include_once(__DIR__ . "./../bootstrap.php");
-	include_once(__DIR__ . "./../backend/utils/dbConnection.php");
 
 	$activeSesion;
 	$isSessionActive;
@@ -27,13 +26,11 @@
 	} else {
 		$isSessionActive = 0;
 	}
-
-	$db = new dbConnection();
 	?>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="../css/stylesDashboard.css">
+	<link rel="stylesheet" type="text/css" href="./css/stylesDashboard.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,7 +62,7 @@
 					<div class="carousel-item active">
 						<div class="cards-wrapper">
 							<div class="card bg-dark">
-								<img src="../img/audifonos.jfif" class="card-img-top img-fluid" alt="Imagen del producto 1">
+								<img src="./img/audifonos.jfif" class="card-img-top img-fluid" alt="Imagen del producto 1">
 								<div class="card-body">
 									<h5 class="card-title">Audifonos</h5>
 									<p class="card-text">Alta calidad de audio</p>
@@ -73,21 +70,21 @@
 							</div>
 
 							<div class="card bg-dark">
-								<img src="../img/audifonos2.jfif" class="card-img-top img-fluid" alt="Imagen del producto 2">
+								<img src="./img/audifonos2.jfif" class="card-img-top img-fluid" alt="Imagen del producto 2">
 								<div class="card-body">
 									<h5 class="card-title">Audífonos bluetooth</h5>
 									<p class="card-text">Dura la pila hasta 30 horas</p>
 								</div>
 							</div>
 							<div class="card bg-dark">
-								<img src="../img/keyboard2.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
+								<img src="./img/keyboard2.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
 								<div class="card-body">
 									<h5 class="card-title">Teclado</h5>
 									<p class="card-text">Teclado para computadora</p>
 								</div>
 							</div>
 							<div class="card bg-dark">
-								<img src="../img/cargador.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
+								<img src="./img/cargador.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
 								<div class="card-body">
 									<h5 class="card-title">Cargador</h5>
 									<p class="card-text">Cargador de laptop Lenovo</p>
@@ -114,7 +111,7 @@
 						<div class="cards-wrapper">
 
 							<div class="card bg-dark">
-								<img src="../img/keyboard.jfif" class="card-img-top img-fluid" alt="Imagen del producto 1">
+								<img src="./img/keyboard.jfif" class="card-img-top img-fluid" alt="Imagen del producto 1">
 								<div class="card-body">
 									<h5 class="card-title">Teclado</h5>
 									<p class="card-text">Teclado RGB</p>
@@ -122,7 +119,7 @@
 							</div>
 
 							<div class="card bg-dark">
-								<img src="../img/mouse3.jfif" class="card-img-top img-fluid" alt="Imagen del producto 2">
+								<img src="./img/mouse3.jfif" class="card-img-top img-fluid" alt="Imagen del producto 2">
 								<div class="card-body">
 									<h5 class="card-title">Mouse</h5>
 									<p class="card-text">Mouse gamer para PC</p>
@@ -131,7 +128,7 @@
 
 
 							<div class="card bg-dark">
-								<img src="../img/mouse2.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
+								<img src="./img/mouse2.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
 								<div class="card-body">
 									<h5 class="card-title">Mouse</h5>
 									<p class="card-text">Mouse con luces RGB</p>
@@ -139,7 +136,7 @@
 							</div>
 
 							<div class="card bg-dark">
-								<img src="../img/audifonos3.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
+								<img src="./img/audifonos3.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
 								<div class="card-body">
 									<h5 class="card-title">Audífonos</h5>
 									<p class="card-text">Audífonos de diadema</p>
@@ -166,7 +163,7 @@
 						<div class="cards-wrapper">
 							<div class="card bg-dark">
 								<div>
-								<img src="../img/laptop.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
+								<img src="./img/laptop.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
 
 								</div>
 								<div class="card-body">
@@ -175,14 +172,14 @@
 								</div>
 							</div>
 							<div class="card bg-dark">
-								<img src="../img/printer.jfif" class="card-img-top img-fluid" alt="Imagen del producto 2">
+								<img src="./img/printer.jfif" class="card-img-top img-fluid" alt="Imagen del producto 2">
 								<div class="card-body">
 									<h5 class="card-title">Impresora</h5>
 									<p class="card-text">Impresora láser</p>
 								</div>
 							</div>
 							<div class="card bg-dark">
-								<img src="../img/printer2.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
+								<img src="./img/printer2.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
 								<div class="card-body">
 									<h5 class="card-title">Impresora</h5>
 									<p class="card-text">Impresora a color</p>
@@ -190,7 +187,7 @@
 							</div>
 
 							<div class="card bg-dark">
-								<img src="../img/laptop2.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
+								<img src="./img/laptop2.jfif" class="card-img-top img-fluid" alt="Imagen del producto 3">
 								<div class="card-body">
 									<h5 class="card-title">Laptop</h5>
 									<p class="card-text">Laptop 16GB RAM</p>

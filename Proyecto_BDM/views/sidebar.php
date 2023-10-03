@@ -1,6 +1,6 @@
 <div class="sidebar">
     <div class="logo-details">
-        <img src="../img/logo.jpg" class="imgSideBar">
+        <img src="./img/logo.jpg" class="imgSideBar">
     </div>
     <ul class="nav-links">
         <li>
@@ -72,13 +72,13 @@
         <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="../img/profilePicture.png" alt="FotoDePerfil">
+                        <img src="./img/profilePicture.png" alt="FotoDePerfil">
                     </div>
                     <div class="name-job">
                         <div class="profile_name">Usuario</div>
                         <div class="rol">Cliente</div>
                     </div>
-                    <form action="./../index.php">
+                    <form action="./backend/controllers/closeSession.php">
                         <button type="submit" class="bg-dark-x border-0">
                             <i class='bx logout bxs-log-out'></i>
                         </button>

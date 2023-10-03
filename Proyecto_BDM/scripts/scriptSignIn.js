@@ -6,6 +6,8 @@ const imageInput = document.getElementById('foto');
 const emailText = document.getElementById('inputEmail');
 const passText = document.getElementById('inputPass');
 const rolSelect = document.getElementById('inputSelectRol');
+const checkPass = document.getElementById('checkbox');
+const usernameText = document.getElementById('inputUsuario');
 
 const btnUpload = document.getElementById('nextBtn');
 
@@ -16,23 +18,25 @@ window.onload = function(){
 setInterval(function(){
 	activateBtnSignUp();
 }, 500);
-/*
+
 (function(){
-	const formSignUp = document.getElementById('updateProfile');
+	const formSignUp = document.getElementById('registerForm');
 	formSignUp.onsubmit = function(e){
 		 e.preventDefault();
 		const formData = new FormData();
+		formData.append('email', emailText.value);
+		formData.append('username', usernameText.value);
+		formData.append('password', passText.value);
 		formData.append('name', nameText.value.trim());
 		formData.append('lastname', lastNameText.value.trim());
+		formData.append('birthdate', dateInput.value);
+		formData.append('image', imageInput.files[0]);
 		formData.append('gender', genderSelect.options[genderSelect.selectedIndex].value);
-		formData.append('birthday', dateInput.value);
-		formData.append('picture', imageInput.files[0]);
-		formData.append('email', emailText.value);
-		formData.append('password', passText.value);
+		formData.append('isPublic', checkPass.checked ? 1 : 0);
 		formData.append('rol', rolSelect.options[rolSelect.selectedIndex].value);
 
 		let xhr = new XMLHttpRequest();
-		//xhr.open("POST", "../backend/controllers/signInController.php", true);
+		xhr.open("POST", "../backend/controllers/signInController.php", true);
 		xhr.onreadystatechange = function(){
 			console.log(xhr.readyState);
 			if(xhr.readyState == XMLHttpRequest.DONE){
@@ -66,7 +70,7 @@ setInterval(function(){
 
 	}
 })();
- */
+ 
 function activateBtnSignUp(){
 	if(onlyLetters() && somethingSelected() && validateDate() && validatePicture() && validatePassword() && validateEmail() && somethingSelectedRol()){
 		btnUpload.disabled = false;
@@ -91,6 +95,17 @@ function onlyLetters(){
 			message.innerText = "";
 			return true;
 		}
+	}
+}
+
+function withText(){
+	const message = document.getElementById('textWarningUsuario');
+	if(!usernameText.value){
+		message.innerText = "Campo(s) incompleto(s)";
+		return false;
+	}else{
+		message.innerText = "Campo(s) incompleto(s)";
+		return false;
 	}
 }
 
@@ -185,6 +200,14 @@ function validatePassword(){
 			message.innerText = "La contraseña debe contener lo siguiente: 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial";
 			return false;
 		}
+	}
+}
+
+function toggleInput(){
+	if(checkPass.checked){
+		return true;
+	}else{
+		return false;
 	}
 }
 
