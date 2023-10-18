@@ -2,6 +2,7 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	require_once "../utils/dbConnection.php";
     require_once "../model/user.php";
+	
 	if(isset($_POST['identity']) && isset($_POST['password'])){
 		$identity = $_POST['identity'];
 		$password = $_POST['password'];

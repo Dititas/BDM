@@ -3,52 +3,53 @@ const passwordText = document.getElementById('passInput');
 
 const btnLogIn = document.getElementById('nextBtn');
 
-window.onload = function(){
+window.onload = function () {
 	btnLogIn.disabled = true;
 }
 
-setInterval(function(){
+setInterval(function () {
 	activateBtnLogIn();
-},500);
+}, 500);
 
-(function(){
+(function () {
 	const formLogin = document.getElementById('loginForm');
-	formLogin.onsubmit = function(e){
-		
-		 e.preventDefault();
+	formLogin.onsubmit = function (e) {
+
+		e.preventDefault();
 		const formData = new FormData();
 		formData.append('identity', emailText.value);
 		formData.append('password', passwordText.value);
 
 		let xhr = new XMLHttpRequest();
-		xhr.open("POST", "../backend/controllers/logInController.php", true);	
-		xhr.onreadystatechange = function(){
+		xhr.open("POST", "../backend/controllers/logInController.php", true);
+		xhr.onreadystatechange = function () {
 			console.log(xhr.readyState);
-			if(xhr.readyState == XMLHttpRequest.DONE){
-				if(xhr.status == 200){
-					if(xhr.response){
+			if (xhr.readyState == XMLHttpRequest.DONE) {
+				if (xhr.status == 200) {
+					if (xhr.response) {
 						console.log(xhr.response);
-						try{
+						try {
 							let res = JSON.parse(xhr.response);
-							if(res.success != true){
+							if (res.success != true) {
 								alert(res.msg);
-  			        			return;
-							}else{
+								return;
+							} else {
 								//DEBE REDIRIGIR AL LOGIN
-								 alert(res.msg);
-								 alert(res.data);
-								 window.location.replace("../index.php");
-  			        			return; 
-							}							
-						}catch(error){
+								alert(res.msg);
+								//alert(res.data);
+								window.location.replace("../index.php");
+
+								return;
+							}
+						} catch (error) {
 							console.error("Ha ocurrido un error: " + error);
 							alert(error);
 						}
-					}else{
+					} else {
 						console.error("La respuesta del servidor está vacía");
 						alert("La respuesta del servidor está vacía");
 					}
-				}else{
+				} else {
 					console.error("Ha ocurrido un error en la solicitud: " + xhr.status);
 					alert(xhr.status);
 				}
@@ -58,44 +59,38 @@ setInterval(function(){
 	}
 })();
 
-function activateBtnLogIn(){
-	if(validateEmail() && validatePassword()){
-		btnLogIn.disabled = false;
-	}else{
-		btnLogIn.disabled = true;
+//Que sea con lo de comprobar con la bd
+function activateBtnLogIn() {
+	if (validateEmail() && validatePassword()) {
+		nextButton.disabled = false;
+	} else {
+		nextButton.disabled = true;
 	}
 }
 
-function validateEmail(){
-	const message = document.getElementById('textWarningEmail');
-	emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+function validateEmail() {
 
-	if(emailText.value !== ""){
-		if(emailRegex.test(emailText.value)){
-			message.innerText = "";
-			return true;
-		}else{
-			message.innerText = "Correo no válido";
-			return false;
-		}
+	if (emailText.value !== "") {
+		isEmailValid = true;
+		return true;
+
+	} else {
+		isEmailValid = false;
+		return false;
 	}
 }
 
-function validatePassword(){
-	const message = document.getElementById('textWarningPass');
-	var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,30}$/;	
-
-	if(passwordText.value !== ""){
-		if(passwordRegex.test(passwordText.value)){
-			message.innerText = "";
-			return true;
-		}else{
-			message.innerText = "La contraseña debe contener lo siguiente: 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial";
-			return false;
-		}
+function validatePassword() {
+	if (passwordText.value !== "") {
+		isPassValid = true;
+		return true;
+	} else {
+		isPassValid = false;
+		return false;
 	}
 }
-/* const nextButton = document.getElementById('nextBtn');
+
+const nextButton = document.getElementById('nextBtn');
 let isPassValid = false;
 let isEmailValid = false;
 
@@ -111,7 +106,7 @@ setInterval(function () {
 	}
 }, 500);
 
-
+/*
 document.querySelector(".emailText").addEventListener('input', function () {
 	campo = event.target;
 	valido = document.getElementById('textWarningEmail');
@@ -190,28 +185,28 @@ document.querySelector(".passText").addEventListener('input', function () {
 		xhr.send(formData);
 	}
 })(); */
-		/*xhr.onreadystatechange = function() {
-			console.log(xhr.readyState);
-			if(xhr.readyState == XMLHttpRequest.DONE) {
-				if(xhr.status == 200){
-					console.log(xhr.response);
-					try{
-						let res = JSON.parse(xhr.response);
-						if(res.suscces != true) return;
-						alert(res.msg);
-						window.location.replace("./../../index.php");//CAMBIAR AL CONTROLADOR QUE TE TRAE LOS PRODUCTOS						
-					}catch(error){
-						console.error("Ha ocurrido un error: " + error);
-					}
-				}else{
-					console.error("La respuesta del servidor está vacía");
-				}
-			}else{
-				console.error("Ha ocurrido un error en la solicitud: " + xhr.status);
+/*xhr.onreadystatechange = function() {
+	console.log(xhr.readyState);
+	if(xhr.readyState == XMLHttpRequest.DONE) {
+		if(xhr.status == 200){
+			console.log(xhr.response);
+			try{
+				let res = JSON.parse(xhr.response);
+				if(res.suscces != true) return;
+				alert(res.msg);
+				window.location.replace("./../../index.php");//CAMBIAR AL CONTROLADOR QUE TE TRAE LOS PRODUCTOS						
+			}catch(error){
+				console.error("Ha ocurrido un error: " + error);
 			}
+		}else{
+			console.error("La respuesta del servidor está vacía");
 		}
-		xhr.send(formData);
+	}else{
+		console.error("Ha ocurrido un error en la solicitud: " + xhr.status);
 	}
+}
+xhr.send(formData);
+}
 })();
 */
 /* document.addEventListener("DOMContentLoaded", function () {
@@ -221,5 +216,4 @@ document.querySelector(".passText").addEventListener('input', function () {
 		event.preventDefault();
 		window.location.href = "./dashboard.php";
 	});
-});
- */
+});*/

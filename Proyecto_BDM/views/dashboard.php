@@ -3,6 +3,7 @@
 
 <head>
 	<?php
+	include 'urls.php';
 	include_once(__DIR__ . "./../bootstrap.php");
 
 	$activeSesion;
@@ -12,6 +13,7 @@
 	if (isset($_SESSION['rolUser']) && isset($_SESSION['AUTH'])) {
 		$imagenCodificada;
 		$activeSesion = $_SESSION['AUTH'];
+		echo $activeSesion;
 		if ($_SESSION['rolUser'] == 'maestro') {
 			$isSessionActive = 1;
 			$imagenCodificada = base64_encode($activeSesion["picture_userInstructor"]);
@@ -208,9 +210,10 @@
 
 		</section>
 	</section>
+<?php
 
-
-	<script type="text/javascript" src="../scripts/scriptDashboard.js"></script>
+?>
+	<script type="text/javascript" src="./scripts/scriptDashboard.js"></script>
 
 </body>
 

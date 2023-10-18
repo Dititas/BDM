@@ -1,3 +1,21 @@
+<?php
+if (isset($_SESSION["AUTH"])) {
+    $userInfo = $_SESSION["AUTH"];
+    $userName = $userInfo["user_userName"];
+    $userRole = $userInfo["user_rol"];
+    if ($userRole === 'buyer') {
+        $userRole = 'Comprador';
+    } else if ($userRole === 'seller') {
+        $userRole = 'Vendedor';
+    } else {
+        $userRole = 'Administrador';
+    }
+} else {
+    $userInfo = "";
+    $userName = "";
+    $userRole = "";
+}
+?>
 <div class="sidebar">
     <div class="logo-details">
         <img src="./img/logo.jpg" class="imgSideBar">
@@ -14,7 +32,7 @@
             </form>
         </li>
         <li>
-            <form action="./dashboard.php">
+            <form action="../index.php">
                 <button type="submit" class="bg-dark border-0 boton">
                     <i class='bx bxs-home'></i>
                     <span class="link_name">Inicio</span>
@@ -62,7 +80,7 @@
             </form>
         </li>
         <li>
-            <form action="./myProfile.php">
+            <form action="<?php echo $myProfileURL; ?>">
                 <button type="submit" class="bg-dark border-0 boton">
                     <i class='bx bxs-user'></i>
                     <span class="link_name">Mi Perfil</span>
@@ -70,22 +88,22 @@
             </form>
         </li>
         <li>
-                <div class="profile-details">
-                    <div class="profile-content">
-                        <img src="./img/profilePicture.png" alt="FotoDePerfil">
-                    </div>
-                    <div class="name-job">
-                        <div class="profile_name">Usuario</div>
-                        <div class="rol">Cliente</div>
-                    </div>
-                    <form action="./backend/controllers/closeSession.php">
-                        <button type="submit" class="bg-dark-x border-0">
-                            <i class='bx logout bxs-log-out'></i>
-                        </button>
-                    </form>
-
+            <div class="profile-details">
+                <div class="profile-content">
+                    <img src="./img/profilePicture.png" alt="FotoDePerfil">
                 </div>
-            </li>
+                <div class="name-job">
+                    <div class="profile_name"><?php echo $userName ?></div>
+                    <div class="rol"><?php echo $userRole ?></div>
+                </div>
+                <form action="./backend/controllers/closeSession.php">
+                    <button type="submit" class="bg-dark-x border-0">
+                        <i class='bx logout bxs-log-out'></i>
+                    </button>
+                </form>
+
+            </div>
+        </li>
         <?php
         /*
         if ($isSessionActive != 0 && $isSessionActive != 3) {
@@ -237,6 +255,6 @@
             </li>
         <?php
         }
-        */?>
+        */ ?>
     </ul>
 </div>

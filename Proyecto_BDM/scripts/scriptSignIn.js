@@ -141,7 +141,7 @@ function validateDate(){
 	const currentDate = new Date();
 	const message = document.getElementById('textWarningDate');
 
-	if(dateInput !== ""){
+	if(dateInput.value !== ""){
 		const selectedDate = new Date(dateInput.value);
 		if(selectedDate > currentDate){
 			message.innerText = "La fecha seleccionada es posterior al día actual";

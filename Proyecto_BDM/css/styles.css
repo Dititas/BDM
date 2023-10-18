@@ -9,6 +9,13 @@
 	 display: none;
 }
 
+#registerContainer::-webkit-scrollbar {
+    width: 30px !important; /* Ancho de la barra de desplazamiento */
+}
+
+#registerContainer::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color del pulgar de la barra de desplazamiento */
+}
 
 
 body {
@@ -104,7 +111,6 @@ input[type="file"]::file-selector-button:hover {
 
 .custom-file-input {
 	background-color: var(--dark-a) !important;
-	padding-right: 18rem;
 }
 
 .colorWarning {

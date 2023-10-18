@@ -18,10 +18,9 @@
 </head>
 
 <body class="bg-dark">
-
-	<section>
-		<div class="row g-0 d-flex align-items-center">
-			<div class="col-lg-7 d-none d-lg-block">
+	<section class="container-fluid">
+		<div class="row g-0 d-flex vh-100">
+			<div class="d-flex col-lg-7 d-none d-lg-block vh-100">
 				<div id="carouselExampleCaptions" class="carousel slide">
 					<div class="carousel-indicators">
 						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -50,15 +49,14 @@
 					</button>
 				</div>
 			</div>
-
-			<div class="col-lg-5  d-flex flex-column ">
-				<div class="px-lg-5 pt-lg-4 pb-lg-3 p-4 text-center">
+			<div class=" d-flex col-lg-5  flex-column vh-100">
+				<div class="d-flex justify-content-center align-items-center px-lg-5">
 					<img src="./../img/logo.jpg" class="" width="250" height="250">
 				</div>
-				<div class="mx-lg-4 py-lg-4 p-5">
-					<h1 class="font-weight-bold text-center mb-4">Bienvenido</h1>
+				<div class="d-flex flex-column justify-content-center mx-lg-4 py-lg-4 pe-5 ps-5">
+					<h1 class="font-weight-bold text-center mb-3">Bienvenido</h1>
 
-					<form class="mb-5" id="loginForm" method="post" action="register.php">
+					<form class="mb-2" id="loginForm" method="post" action="login.php">
 						<div class="mb-4">
 							<label for="exampleInputEmail1" class="form-label font-weight-bold">Correo</label>
 							<input type="email" class="form-control bg-dark-x text-light border-0 emailText mb-2" placeholder="Ingresa tu Correo" id="emailInput" aria-describedby="emailHelp">
@@ -82,8 +80,8 @@
 					</div> -->
 				</div>
 
-				<div>
-					<div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4">
+				<div class="d-flex flex-column justify-content-center align-items-center">
+					<div class="text-center px-lg-5">
 						<p class="d-inline-block mb-0">
 							¿No tienes una cuenta? <a href="signIn.php" class="text-light font-weight-bold text-decoration-none">Registrate aquí</a>
 						</p>

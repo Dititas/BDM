@@ -2,9 +2,9 @@
     class dbConnection {
         static public function connect() {
             $host = "localhost";
-            $db = "BytesAndBits";
+            $db = "bytesandbits";
             $user = "root";
-            $pass = "admin";
+            $pass = "";
             try {
                 $mysqli = new mysqli($host,$user,$pass,$db);
                 if ($mysqli->connect_errno) {

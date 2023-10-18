@@ -6,8 +6,9 @@
 		if(	isset($_POST['name'])        	&& 
         	isset($_POST['lastname'])   	&& 
 			isset($_POST['birthdate'])  	&& 
-        	isset($_POST['gender'])      	&&
-        	isset($_POST['isPublic'])){
+        	isset($_POST['gender'])      	//&&
+        	//isset($_POST['isPublic'])
+			){
 				session_start();
 				$loggedUser = $_SESSION['AUTH'] ?? null;
 
@@ -18,7 +19,8 @@
 				$lastname = $_POST['lastname'];
 				$birthdate = $_POST['birthdate'];
 				$gender = $_POST['gender'];
-				$isPublic = $_POST['isPublic'];
+				//$isPublic = $_POST['isPublic'];
+				$isPublic = 1;
 
 				$password = $_POST['password'] ?? null;
 				$convertedImage = $_FILES['image']['tmp_name'] ?? null;
@@ -265,5 +267,3 @@
 		}
 	}
  */
-
-?>

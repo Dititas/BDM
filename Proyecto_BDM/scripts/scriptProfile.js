@@ -40,10 +40,10 @@ setInterval(function(){
 
 		const formData = new FormData();
 
-		formData.append('nombre', nameText.value.trim());
-		formData.append('apellido', lastNameText.value.trim());
-		formData.append('genero', genderSelect.options[genderSelect.selectedIndex].value);
-		formData.append('fechaNacimiento', dateInput.value);
+		formData.append('name', nameText.value.trim());
+		formData.append('lastname', lastNameText.value.trim());
+		formData.append('gender', genderSelect.options[genderSelect.selectedIndex].value);
+		formData.append('birthdate', dateInput.value);
 
 		if(auxSentInfo === 2 || auxSentInfo === 4)
 			formData.append('foto', imageInput.files[0]);			
@@ -229,6 +229,7 @@ function validateSamePassword(){
 		return 2;
 	}
 }
+
 
 /*
 
