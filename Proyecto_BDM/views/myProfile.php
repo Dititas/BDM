@@ -8,8 +8,9 @@
 	include_once(__DIR__ . "./../bootstrap.php");
 	session_start();
 	if (isset($_SESSION["AUTH"])) {
-
 		$userInfo = $_SESSION["AUTH"];
+		$imagenCodificada = base64_encode($userInfo["user_image"]);
+		$urlImagen = 'data:image/jpeg;base64,' . $imagenCodificada;
 	} else {
 		$userInfo = "";
 	}
@@ -69,14 +70,14 @@
 	</section>
 
 	<section class="profile-main">
-		<div class="container ">
-			<div id="updateProfile" class="profile update-profile">
-				<div class="centered-content">
-					<img class="image" src="">
+		<div class="container d-flex align-items-center ">
+			<div id="updateProfile" class="profile update-profile container d-flex flex-column">
+				<div class="centered-content col-8">
+					<img class="image" src="<?php echo $urlImagen; ?>">
 					<h3></h3>
 				</div>
 
-				<form id="updateProfile" action="#" method="post" enctype="multipart/form-data">
+				<form id="updateProfile" class="col-8" action="#" method="post" enctype="multipart/form-data">
 					<div class="flex">
 						<div class="inputBox">
 

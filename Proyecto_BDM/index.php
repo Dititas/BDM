@@ -2,7 +2,7 @@
 
 session_start();
 if(!isset($_SESSION["AUTH"])){
-	include_once "dashboard.php";
+	include_once "./views/dashboard.php";
 }else{
 	/*echo "<pre>";
     print_r($_SESSION["AUTH"]);

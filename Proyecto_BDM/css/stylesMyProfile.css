@@ -484,7 +484,13 @@ input[type="file"]::file-selector-button:hover {
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
+.image{
+	width: 200px !important;
+	height: 200px !important;
+	border-radius: 50% !important;
+	object-fit: contain;
 
+}
 /*.labelLastName {  
 		display: block; 
     margin-left: 35rem !important;

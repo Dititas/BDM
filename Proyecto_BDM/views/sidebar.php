@@ -10,6 +10,8 @@ if (isset($_SESSION["AUTH"])) {
     } else {
         $userRole = 'Administrador';
     }
+    $imagenCodificada = base64_encode($userInfo["user_image"]);
+    $urlImagen = 'data:image/jpeg;base64,' . $imagenCodificada;
 } else {
     $userInfo = "";
     $userName = "";
@@ -90,13 +92,13 @@ if (isset($_SESSION["AUTH"])) {
         <li>
             <div class="profile-details">
                 <div class="profile-content">
-                    <img src="./img/profilePicture.png" alt="FotoDePerfil">
+                    <img class="img-profile" src="<?php echo  $urlImagen; ?>" alt="FotoDePerfil">
                 </div>
                 <div class="name-job">
                     <div class="profile_name"><?php echo $userName ?></div>
                     <div class="rol"><?php echo $userRole ?></div>
                 </div>
-                <form action="./backend/controllers/closeSession.php">
+                <form action="../backend/controllers/closeSession.php">
                     <button type="submit" class="bg-dark-x border-0">
                         <i class='bx logout bxs-log-out'></i>
                     </button>
