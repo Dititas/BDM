@@ -60,6 +60,7 @@ class User
             $stmt->bind_param("s", $_identification); // Enlaza el parámetro con bind_param
             $stmt->execute();
             $result = $stmt->get_result();
+            $stmt->close();
             while ($row = $result->fetch_assoc()) {
                 return $row;
             }
@@ -79,6 +80,7 @@ class User
             $stmt->bind_param("s", $_identification); // Enlaza el parámetro con bind_param
             $stmt->execute();
             $result = $stmt->get_result();
+            $stmt->close();
             while ($row = $result->fetch_assoc()) {
                 return $row;
             }
@@ -98,6 +100,7 @@ class User
             $stmt->bind_param("s", $_identification); // Enlaza el parámetro con bind_param
             $stmt->execute();
             $result = $stmt->get_result();
+            $stmt->close();
             while ($row = $result->fetch_assoc()) {
                 return $row;
             }
@@ -117,6 +120,29 @@ class User
             $stmt->execute();
             $result = $stmt->get_result();
             $users = array();
+            $stmt->close();
+            while ($row = $result->fetch_assoc()) {
+                $users[] = $row;
+            }
+            return $users;
+        } catch (Exception $e) {
+            $response = (object)array("status" => 500, "message" => $e->getMessage());
+            echo json_encode($response);
+            return null;
+        }
+        return null;
+    }
+
+    public function searchUser($_mysqli, $_search)
+    {
+        $query = "CALL searchUser(?);";
+        try {
+            $stmt = $_mysqli->prepare($query);
+            $stmt->bind_param("s", $_search); // Enlaza el parámetro con bind_param
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $users = array();
+            $stmt->close();
             while ($row = $result->fetch_assoc()) {
                 $users[] = $row;
             }
