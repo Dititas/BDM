@@ -782,7 +782,7 @@ CREATE PROCEDURE `getListByName`(
 )
 BEGIN
     SELECT * FROM CompleteList
-    WHERE `bytesandbits`.`List`.`list_name` = _name
+    (_name IS NULL OR `bytesandbits`.`List`.`list_name` LIKE CONCAT("%", _name, "%"))
     AND `bytesandbits`.`List`.`list_isEnable` = 1;
 END $$
 DELIMITER ;
@@ -836,7 +836,7 @@ DROP PROCEDURE IF EXISTS `addProductInCategory`;
 DELIMITER $$
 CREATE PROCEDURE `addProductInCategory`(
     IN _idProduct       INT,
-    IN _idCaegory       INT
+    IN _idCategory       INT
 )
 BEGIN
     INSERT INTO `bytesandbits`.`Category_Product`(
@@ -844,7 +844,7 @@ BEGIN
         `categoryProduct_category`
     )VALUES(
         _idProduct,
-        _idCaegory
+        _idCategory
     );
 END $$
 DELIMITER ;
@@ -852,6 +852,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS `modifyCategory`;
 DELIMITER $$
 CREATE PROCEDURE `modifyCategory`(
+    IN _id              INT,
     IN _name            VARCHAR(60),
     IN _description     TEXT,
     IN _isEnable        BIT
@@ -861,7 +862,7 @@ BEGIN
         `category_name` = COALESCE(NULLIF(_name, ""), `category_name`),
         `category_description` = COALESCE(NULLIF(_description, ""), `category_description`),
         `category_isEnable` = _isEnable;
-    WHERE `list_id` = _id;
+    WHERE `category_id` = _id;
 END $$
 DELIMITER ;
 
@@ -1060,17 +1061,39 @@ BEGIN
 END $$
 DELIMITER ;
 
-/* DROP PROCEDURE IF EXISTS `getConversations`;
+DROP PROCEDURE IF EXISTS `getConversationsSeller`;
 DELIMITER $$
-CREATE PROCEDURE `getConversations`(
-
+CREATE PROCEDURE `getConversationsSeller`(
+    IN _seller  INT
 )
 BEGIN
-    
+    SELECT 
+        `conversation_id`,
+        `conversation_seller`,
+        `conversation_buyer`,
+        `conversation_product`
+    FROM `bytesandbits`.`Conversation`
+    WHERE `conversation_seller` = _seller
+    AND `conversation_isEnable` = 1;
 END $$
-DELIMITER ; 
-TE FALTA VER CÓMO TRAER EL ID DE LA CONVERSACIÓN PARA USARLA EN EL SP DE ABAJO
-*/
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `getConversationsBuyer`;
+DELIMITER $$
+CREATE PROCEDURE `getConversationsBuyer`(
+    IN _buyer  INT
+)
+BEGIN
+    SELECT 
+        `conversation_id`,
+        `conversation_seller`,
+        `conversation_buyer`,
+        `conversation_product`
+    FROM `bytesandbits`.`Conversation`
+    WHERE `conversation_buyer` = _buyer
+    AND `conversation_isEnable` = 1;
+END $$
+DELIMITER ;
 
 DROP PROCEDURE IF EXISTS `getAllMessages`;
 DELIMITER $$
