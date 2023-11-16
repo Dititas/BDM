@@ -4,9 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mis Listas</title>
     <?php
-    include_once(__DIR__ . "./../bootstrap.php");
+	include_once(__DIR__ . "./../bootstrap.php");
+	session_start();
+	if (isset($_SESSION["AUTH"])) {
+		$userInfo = $_SESSION["AUTH"];
+		$imagenCodificada = base64_encode($userInfo["user_image"]);
+		$urlImagen = 'data:image/jpeg;base64,' . $imagenCodificada;
+	} else {
+		$userInfo = "";
+	}
     ?>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../css/stylesDashboard.css">
@@ -59,10 +67,10 @@
                                 <td>Mi lista #1</td>
                                 <td>Productos para mis hermanos</td>
                                 <td>
-                                    <button class="bg-transparent border-0">
+                                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
                                         <i class='bx bxs-trash icon-large'></i>
                                     </button>
-                                    <button class="bg-transparent border-0 ms-3">
+                                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
                                         <i class='bx bxs-pencil icon-large'></i>
                                     </button>
                                     <button class="bg-transparent border-0 ms-3">
@@ -144,12 +152,44 @@
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="editWLModal" tabindex="-1" role="dialog" aria-labelledby="editWLModalLabel" aria-hidden="true">
+        <div class="modal-dialog bg-dark" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editWLModalLabel">Agregar Nueva Lista</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mb-2">
+                        <label for="listName">Nombre de la Lista</label>
+                        <input type="text" class="form-control" id="listName" placeholder="Ingrese el nombre de la lista">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="listDescription">Descripción</label>
+                        <textarea class="form-control" id="listDescription" rows="3" placeholder="Ingrese una breve descripción"></textarea>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="listImage">Imagen de la Lista</label>
+                        <input type="file" class="form-control-file" id="listImage">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="privacySelect">Privacidad</label>
+                        <select class="form-control" id="privacySelect">
+                            <option value="public">Pública</option>
+                            <option value="private">Privada</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="addListButton">Agregar Lista</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script type="text/javascript" src="../scripts/scriptDashboard.js"></script>
     <script type="text/javascript" src="../scripts/scriptWishLists.js"></script>
-
 </body>
 
 </html>

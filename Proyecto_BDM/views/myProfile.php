@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
 	<?php
-	
+
 	include_once(__DIR__ . "./../bootstrap.php");
 	session_start();
 	if (isset($_SESSION["AUTH"])) {
@@ -43,7 +43,6 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="./../css/stylesMyProfile.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,9 +51,10 @@
 
 	<script src="https://kit.fontawesome.com/3b5032f2e6.js" crossorigin="anonymous"></script>
 
+	<link rel="stylesheet" type="text/css" href="./../css/stylesMyProfile.css">
 
 
-	<title>Learn-Hub</title>
+	<title>Mi Perfil</title>
 
 
 </head>
@@ -77,7 +77,7 @@
 					<h3></h3>
 				</div>
 
-				<form id="updateProfile" class="col-8" action="#" method="post" enctype="multipart/form-data">
+				<form id="updateProfile" class="col-8 mt-5" action="#" method="post" enctype="multipart/form-data">
 					<div class="flex">
 						<div class="inputBox">
 
@@ -164,18 +164,18 @@
 							</div>
 
 							<div class="centered-content">
-								<button id="cancelBtn" class="btn btn-danger">Cancelar</button>
+								<button id="cancelBtn" class="btn btn-info">Cancelar</button>
 								<button type="submit" id="nextBtn" class="btn btn-primary">Actualizar Perfil</button>
-
+								<button type="submit" id="deleteBtn" class="btn btn-danger">Eliminar Cuenta</button>
 							</div>
 
 
 						</div>
 					</div>
+				</form>
 			</div>
-			</form>
 
-		</div>
+
 		</div>
 	</section>
 

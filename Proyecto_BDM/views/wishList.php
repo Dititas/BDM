@@ -7,6 +7,14 @@
     <title>Lista de deseos</title>
     <?php
     include_once(__DIR__ . "./../bootstrap.php");
+    session_start();
+	if (isset($_SESSION["AUTH"])) {
+		$userInfo = $_SESSION["AUTH"];
+		$imagenCodificada = base64_encode($userInfo["user_image"]);
+		$urlImagen = 'data:image/jpeg;base64,' . $imagenCodificada;
+	} else {
+		$userInfo = "";
+	}
     ?>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../css/stylesDashboard.css">

@@ -41,10 +41,7 @@
 
 	<script src="https://kit.fontawesome.com/3b5032f2e6.js" crossorigin="anonymous"></script>
 
-
-
 	<title>Learn-Hub</title>
-
 
 </head>
 

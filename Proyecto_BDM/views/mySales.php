@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis compras</title>
+    <title>Mis ventas</title>
     <?php
     include_once(__DIR__ . "./../bootstrap.php");
     session_start();
@@ -36,7 +36,7 @@
     <section class="home-selection">
         <div class="home-content">
             <i class="bx bx-menu"></i>
-            <span class="text">Mis Compras</span>
+            <span class="text">Mis Ventas</span>
         </div>
     </section>
     <section class="dashboard-main">
@@ -44,7 +44,7 @@
             <section class="container mt-3">
 
                 <div class="table-container container flex-column">
-                    <h2>Historial de compras</h2>
+                    <h2>Historial de ventas</h2>
                     <table class="table table-striped table-hover table-dark">
                         <thead>
                             <tr>

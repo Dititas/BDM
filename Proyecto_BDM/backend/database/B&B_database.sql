@@ -782,7 +782,7 @@ CREATE PROCEDURE `getListByName`(
 )
 BEGIN
     SELECT * FROM CompleteList
-    (_name IS NULL OR `bytesandbits`.`List`.`list_name` LIKE CONCAT("%", _name, "%"))
+    WHERE (_name IS NULL OR `bytesandbits`.`List`.`list_name` LIKE CONCAT("%", _name, "%"))
     AND `bytesandbits`.`List`.`list_isEnable` = 1;
 END $$
 DELIMITER ;

@@ -7,17 +7,25 @@
     <title>Mis Chats</title>
     <?php
     include_once(__DIR__ . "./../bootstrap.php");
+    session_start();
+	if (isset($_SESSION["AUTH"])) {
+		$userInfo = $_SESSION["AUTH"];
+		$imagenCodificada = base64_encode($userInfo["user_image"]);
+		$urlImagen = 'data:image/jpeg;base64,' . $imagenCodificada;
+	} else {
+		$userInfo = "";
+	}
     ?>
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    <link rel="stylesheet" type="text/css" href="../css/stylesDashboard.css">
-    <link rel="stylesheet" type="text/css" href="../css/stylesMyChats.css">
+    
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;600&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/stylesDashboard.css">
+    <link rel="stylesheet" type="text/css" href="../css/stylesMyChats.css">
     <script src="https://kit.fontawesome.com/3b5032f2e6.js" crossorigin="anonymous"></script>
 
 
