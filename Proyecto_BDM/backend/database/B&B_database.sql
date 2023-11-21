@@ -1147,7 +1147,38 @@ DELIMITER ;
 
 
 /*----------------------------------FUNCIONES--------------------------------------------*/
+CREATE FUNCTION averageProductRatings(_productId INT) RETURNS DECIMAL
+BEGIN
+    DECLARE avgRating DECIMAL;
+    SELECT AVG(`rating_score`) INTO avgRating
+    FROM `bytesandbits`.`Rating`
+    WHERE `rating_product` = _productId;
+    RETURN COALESCE(avgRating, 0);
+END;
 
+CREATE FUNCTION productInCart(_userId INT, _productId INT) RETURNS BOOLEAN
+BEGIN
+    DECLARE isInCart BOOLEAN;
+    SELECT EXISTS (
+        SELECT 1
+        FROM `bytesandbits`.`Cart_Item` ci
+        WHERE ci.`cartItem_user` = _userId AND ci.`cartItem_product` = _productId AND ci.`cartItem_isEnable` = 1
+    ) INTO isInCart;
+    RETURN isInCart;
+END;
 
+/*----------------------------------------TRIGGERS----------------------------------------*/
+CREATE TRIGGER disableProductOnZeroQuantity
+BEFORE UPDATE ON `bytesandbits`.`Product`
+FOR EACH ROW
+SET NEW.`product_isEnable` = IF(NEW.`product_quantityAvailable` > 0, 1, 0);
 
+CREATE TRIGGER closeConversationOnSale
+AFTER INSERT ON `bytesandbits`.`Sale`
+FOR EACH ROW
+BEGIN
+    UPDATE `bytesandbits`.`Conversation`
+    SET `conversation_isEnable` = 0
+    WHERE `conversation_product` = NEW.`sale_product`;
+END;
 
