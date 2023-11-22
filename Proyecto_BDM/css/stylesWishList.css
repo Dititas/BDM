@@ -33,3 +33,7 @@ table td, table th {
     height: 140px;
     object-fit: contain;
 }
+.modal{
+	color: #051923 !important;
+    font-size: 20px;
+}

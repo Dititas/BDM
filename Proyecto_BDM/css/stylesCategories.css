@@ -19,3 +19,7 @@ a{
 .column-list li {
     padding: 10px;
 }
+
+.modal{
+	color: #051923 !important;
+}

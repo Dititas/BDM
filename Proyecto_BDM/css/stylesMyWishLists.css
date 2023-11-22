@@ -1,5 +1,5 @@
-*{
-    color: white !important;
+a{
+    color: white ;
 }
 .table-container {
     text-align: left;
@@ -43,3 +43,6 @@ table>img {
     color: black;
 }
 
+.modal{
+	color: #051923 !important;
+}

@@ -491,6 +491,9 @@ input[type="file"]::file-selector-button:hover {
 	object-fit: contain;
 
 }
+.modal{
+	color: #051923 !important;
+}
 /*.labelLastName {  
 		display: block; 
     margin-left: 35rem !important;

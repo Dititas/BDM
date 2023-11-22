@@ -27,3 +27,6 @@ table td, table th {
 .modal-title,.modal-body{
 color: black !important;
 }
+.modal{
+	color: #051923 !important;
+}

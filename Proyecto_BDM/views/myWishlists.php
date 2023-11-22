@@ -139,7 +139,7 @@
                             <input type="file" class="form-control-file" id="listImage">
                         </div>
                         <div class="form-group mb-2">
-							<label for="privacySelect">Privacidad</label> class="custom-checkbox">
+							<label for="privacySelect" class="custom-checkbox">Privacidad</label>
 								<input type="checkbox" id="checkbox" onchange="toggleInput()">
 							</label>
 						</div>

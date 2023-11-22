@@ -43,241 +43,26 @@
     </section>
     <section class="dashboard-main">
 
-        <section class="d-flex justify-content-center">
-            <div class="w-75 wishlists-header d-flex  justify-content-between mb-3">
+        <section class="d-flex justify-content-center justify-content-between">
+            <div class="w-100 wishlists-header d-flex  justify-content-between mb-3">
                 <h2>Categorías</h2>
-                <button id="addWL" class="btn btn-primary">Agregar</button>
+                <button id="addWL" class="btn btn-primary me-5">Agregar</button>
             </div>
 
         </section>
-        <section class="container d-flex flex-column container-categories">
-            <h3>
-                <a href="#">Computación</a>
-                <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                    <i class='bx bxs-pencil icon-large'></i>
-                </button>
-                <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                    <i class='bx bxs-trash icon-large'></i>
-                </button>
-            </h3>
-            <ul class="column-list">
-                <li><a href="#">Accesorios de antiestática</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Accesorios para PC Gaming</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Almacenamiento</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Componentes de PC</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Conectividad y Redes</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Laptops y accesorios</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Monitores y pantallas</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Periféricos de computadora</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-            </ul>
-            <hr>
-            <h3><a href="#">Consolas y Videojuegos</a>
-                <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                    <i class='bx bxs-pencil icon-large'></i>
-                </button>
-                <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                    <i class='bx bxs-trash icon-large'></i>
-                </button>
-            </h3>
-            <ul class="column-list">
-                <li><a href="#">Accesorios para consolas</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Accesorios para PC Gaming</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Consolas</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Maquinitas</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Repuestos para consolas</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Videojuegos</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Joysticks y controladores</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Realidad virtual</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-            </ul>
-            <hr>
-            <h3><a href="#">Audio y Video</a>
-                <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                    <i class='bx bxs-pencil icon-large'></i>
-                </button>
-                <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                    <i class='bx bxs-trash icon-large'></i>
-                </button>
-            </h3>
-            <ul class="column-list">
-                <li><a href="#">Accesorios para audio y video</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Accesorios para TV</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Audio</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Cables</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Componentes electrónicos</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Pilas y cargadores</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Proyectores y pantallas</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-                <li><a href="#">Sistemas de sonido para el hogar</a>
-                    <button class="bg-transparent border-0 ms-3" onclick="editList('Mi lista #1', 'Productos para mis hermanos')">
-                        <i class='bx bxs-pencil icon-large'></i>
-                    </button>
-                    <button class="bg-transparent border-0" onclick="confirmDelete('Mi lista #1')">
-                        <i class='bx bxs-trash icon-large'></i>
-                    </button>
-                </li>
-            </ul>
-            <hr>
+        <section class="container flex-column container-categories">
 
+            <ul class="column-list" id="allCategories">
+                <li><a href="#">Sistemas de sonido para el hogar</a>
+                    <button class="bg-transparent border-0 ms-3">
+                        <i class='bx bxs-pencil icon-large'></i>
+                    </button>
+                    <button class="bg-transparent border-0">
+                        <i class='bx bxs-trash icon-large'></i>
+                    </button>
+                </li>
+            </ul>
+            <hr>
         </section>
 
     </section>
@@ -293,7 +78,6 @@
                 </div>
                 <form method="post" action="" id="addCategoryForm" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <span id="userIdInput"><?php echo $userInfo["user_userName"] ?></span>
                         <div class="form-group mb-2">
                             <label for="CategoryName">Nombre de la Categoría</label>
                             <input type="text" class="form-control" id="CategoryName" placeholder="Ingrese el nombre de la categoría" required>
@@ -315,33 +99,24 @@
         <div class="modal-dialog bg-dark" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editWLModalLabel">Agregar Nueva Lista</h5>
+                    <h5 class="modal-title" id="editWLModalLabel">Editar Categoría</h5>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group mb-2">
-                        <label for="listName">Nombre de la Lista</label>
-                        <input type="text" class="form-control" id="listName" placeholder="Ingrese el nombre de la lista">
+                <form method="post" action="" id="editCategoryForm" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-group mb-2">
+                            <label for="editCategoryName">Nombre de la Categoría</label>
+                            <input type="text" class="form-control" id="editCategoryName" placeholder="Ingrese el nombre de la categoría" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="editCategoryDescription">Descripción</label>
+                            <textarea class="form-control" id="editCategoryDescription" rows="3" placeholder="Ingrese una breve descripción"></textarea>
+                        </div>
                     </div>
-                    <div class="form-group mb-2">
-                        <label for="listDescription">Descripción</label>
-                        <textarea class="form-control" id="listDescription" rows="3" placeholder="Ingrese una breve descripción"></textarea>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" id="editCategoryButton">Editar Categoría</button>
                     </div>
-                    <div class="form-group mb-2">
-                        <label for="listImage">Imagen de la Lista</label>
-                        <input type="file" class="form-control-file" id="listImage">
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="privacySelect">Privacidad</label>
-                        <select class="form-control" id="privacySelect">
-                            <option value="public">Pública</option>
-                            <option value="private">Privada</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="addListButton">Agregar Lista</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
