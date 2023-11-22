@@ -1,21 +1,41 @@
 <?php
-class Product{
+class Product
+{
     public function insertProduct($_mysqli, $_name, $_description, $_image, $_quotation, $_price, $_quantityAvailable, $_user)
     {
         $query = "CALL insertProduct(?,?,?,?,?,?,?);";
+
         try {
             $stmt = $_mysqli->prepare($query);
-            $stmt->bind_param("sssssss", $_name, $_description, $_image, $_quotation, $_price, $_quantityAvailable, $_user); // Enlaza los parámetros con bind_param
-            $stmt->execute(); // No se pasan argumentos a execute
+
+            if (!$stmt) {
+                throw new Exception("Error preparing statement: " . $_mysqli->error);
+            }
+
+            $stmt->bind_param("sssssss", $_name, $_description, $_image, $_quotation, $_price, $_quantityAvailable, $_user);
+
+            if (!$stmt->execute()) {
+                throw new Exception("Error executing statement: " . $stmt->error);
+            }
+
+            // Verificar el número de filas afectadas
+            $rowsAffected = $stmt->affected_rows;
+
             $stmt->close();
-            return true;
+
+            if ($rowsAffected > 0) {
+                return true; // Éxito
+            } else {
+                return false; // No se insertaron filas, posible error
+            }
         } catch (Exception $e) {
-            $response = (object)array("status" => 500, "message" => $e->getMessage());
+            $response = (object)array("status" => 500, "message" => $e->getMessage(), "quotation", $_quotation, " name", $_name);
             echo json_encode($response);
             return false;
         }
         return false;
     }
+
 
     public function insertImage($_mysqli, $_image, $_product)
     {
@@ -99,10 +119,10 @@ class Product{
 
         try {
             $stmt = $_mysqli->prepare($query);
-            $stmt->bind_param("i", $_productId); 
+            $stmt->bind_param("i", $_productId);
             $stmt->execute();
 
-            
+
             $result = $stmt->get_result();
             $row = $result->fetch_assoc();
 
@@ -123,13 +143,13 @@ class Product{
             $stmt = $_mysqli->prepare($query);
             $stmt->bind_param("ii", $_userId, $_productId);
             $stmt->execute();
-    
-            
+
+
             $result = $stmt->get_result();
             $row = $result->fetch_assoc();
-            
+
             $stmt->close();
-    
+
             return $row['isInCart'] == 1;
         } catch (Exception $e) {
             $response = (object)array("status" => 500, "message" => $e->getMessage());
@@ -137,6 +157,4 @@ class Product{
             return null;
         }
     }
-
 }
-?>

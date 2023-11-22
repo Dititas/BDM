@@ -163,12 +163,12 @@
                         <span id="textWarningFile" class="font-weight-bold colorWarning mb-2"></span>
 
                         <div class="form-group mb-2">
-                            <label for="productQuotation">Producto cotizado</label>
-                            <select class="form-control" id="productQuotation">
-                                <option value="1">Sí</option>
-                                <option value="0">No</option>
-                            </select>
-                        </div>
+							<label class="custom-checkbox">
+								<input type="checkbox" id="checkbox" onchange="toggleInput()">
+								<span class="checkmark"></span>
+								¿Cotizable?
+							</label>
+						</div>
 
                         <div class="mb-1 col-12">
                             <label for="priceInput" class="form-label font-weight-bold">Precio</label>

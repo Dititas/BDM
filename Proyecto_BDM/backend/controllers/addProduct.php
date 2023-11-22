@@ -12,6 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $description = $_POST['description'];
         $convertedImage = file_get_contents($_FILES['image']['tmp_name']);
         $quotation = $_POST['quotation'];
+        if ($quotation === 1) {
+            $quotation = true;
+        } else if ($quotation === 0) {
+            $quotation = false;
+        }
         $price = $_POST['price'];
         $quantityAvailable = $_POST['quantityAvailable'];
         session_start();

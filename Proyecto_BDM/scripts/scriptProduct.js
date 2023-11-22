@@ -3,9 +3,9 @@ var btnCancelNew = document.querySelector('#addProductModal .btn-secondary');
 const name = document.getElementById('nameInput');
 const description = document.getElementById('descriptionInput');
 const image = document.getElementById('foto');
-const quotation = document.getElementById('productQuotation');
 const price = document.getElementById('priceInput');
 const quantityAvailable = document.getElementById('quantityInput');
+const quotation = document.getElementById('checkbox');
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -41,12 +41,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const formAddWL = document.getElementById('addProductForm');
         formAddWL.onsubmit = function (e) {
+            console.log(name.value,description.value,image.files[0],price.value,quantityAvailable.value,quotation.checked ? 1 : 0);
             e.preventDefault();
             const formData = new FormData();
             formData.append('name', name.value);
             formData.append('description', description.value);
             formData.append('image', image.files[0]);
-            formData.append('quotation', quotation.options[quotation.selectedIndex].value);
+            formData.append('quotation', quotation.checked ? 1 : 0);
             formData.append('price', price.value);
             formData.append('quantityAvailable', quantityAvailable.value);
             let xhr = new XMLHttpRequest();
@@ -54,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == XMLHttpRequest.DONE) {
                     if (xhr.status == 200) {
-                        console.log(xhr);
+                        console.log(xhr.response);
                         if (xhr.response) {
                             try {
                                 let res = JSON.parse(xhr.response);
@@ -133,4 +134,12 @@ function validatePicture() {
             return true;
         }
     }
+}
+
+function toggleInput(){
+	if(quotation.checked){
+		return true;
+	}else{
+		return false;
+	}
 }
