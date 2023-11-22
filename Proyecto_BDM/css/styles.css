@@ -181,14 +181,37 @@ input[type="file"]::file-selector-button:hover {
 	border-width: 0 3px 3px 0;
 	transform: rotate(45deg);
 }
-.info-product-container{
+
+.info-product-container {
 	border-radius: 20px;
 	padding: 25px;
-	border-color:#585858 !important ;
+	border-color: #585858 !important;
 }
 
 .product-gallery-main-img {
 	height: 600px;
 	width: 100%;
 	object-fit: cover;
+}
+
+ul,
+li,
+a {
+	list-style-type: none;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+}
+
+.container-categories {
+	padding: 2rem;
+}
+
+.container-categories li {
+	margin-left: 20px;
+	margin-bottom: 5px;
+}
+
+.modal{
+	color: #051923 !important;
 }

@@ -63,7 +63,7 @@
 ul{
     padding-left: 0;
 }
-li{
+.msg-container li{
     list-style: none;
     margin-bottom: 5px;
 }
