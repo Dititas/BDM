@@ -1,33 +1,56 @@
+var btnAdd = document.getElementById("btnAddProduct");
+var btnCancelNew = document.querySelector('#addProductModal .btn-secondary');
+const name = document.getElementById('nameInput');
+const description = document.getElementById('descriptionInput');
+const image = document.getElementById('foto');
+const quotation = document.getElementById('productQuotation');
+const price = document.getElementById('priceInput');
+const quantityAvailable = document.getElementById('quantityInput');
+
 document.addEventListener("DOMContentLoaded", function () {
-    var btnAdd = document.getElementById("addWL");
-    var btnCancelNew = document.querySelector('#newWLModal .btn-secondary');
+
 
     btnAdd.addEventListener("click", function () {
-        $('#newWLModal').modal('show');
+        $('#addProductModal').modal('show');
     });
 
     btnCancelNew.addEventListener('click', function () {
-        $('#newWLModal').modal('hide');
+        $('#addProductModal').modal('hide');
     });
 
-    const name = document.getElementById('listName');
-    const description = document.getElementById('listDescription');
-    //const listImg = document.getElementById('listImage');
-    const isPublic = document.getElementById('privacySelect');
+    const btnUpload = document.getElementById('addProductButton');
+
+    window.onload = function () {
+        btnUpload.disabled = true;
+    }
+
+    setInterval(function () {
+        activateBtn();
+    }, 500);
+
+    function activateBtn() {
+        if (validatePicture()) {
+            btnUpload.disabled = false;
+        } else {
+            btnUpload.disabled = true;
+        }
+    }
+
 
     (function () {
 
-        const formAddWL = document.getElementById('addWLForm');
+        const formAddWL = document.getElementById('addProductForm');
         formAddWL.onsubmit = function (e) {
             e.preventDefault();
             const formData = new FormData();
             formData.append('name', name.value);
             formData.append('description', description.value);
-            //formData.append('listImage', listImg.textContent);
-            formData.append('isPublic', isPublic.options[isPublic.selectedIndex].value);
-
+            formData.append('image', image.files[0]);
+            formData.append('quotation', quotation.options[quotation.selectedIndex].value);
+            formData.append('price', price.value);
+            formData.append('quantityAvailable', quantityAvailable.value);
             let xhr = new XMLHttpRequest();
-            xhr.open('POST', '../backend/controllers/addWishLists.php', true);
+            xhr.open('POST', '../backend/controllers/addProduct.php', true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == XMLHttpRequest.DONE) {
                     if (xhr.status == 200) {
@@ -41,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     alert(res.msg);
                                     name.value = "";
                                     description.value = "";
-                                    $('#newWLModal').modal('hide');
+                                    $('#addProductModal').modal('hide');
 
                                 }
                             } catch (error) {
@@ -61,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     })();
 
-    var btnConfirmEdit = document.querySelector('#editWLModal .btn-primary');
+    /*var btnConfirmEdit = document.querySelector('#editWLModal .btn-primary');
     var btnCancelEdit = document.querySelector('#editWLModal .btn-secondary');
 
     btnConfirmEdit.addEventListener('click', function () {
@@ -74,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Botón de cancelar edición clickeado");
         $('#editWLModal').modal('hide');
     });
-
+*/
 });
 
 function confirmDelete(listName) {
@@ -92,4 +115,22 @@ function editList(listName, listDescription) {
 
     // Abrir el modal
     $('#editWLModal').modal('show');
+}
+
+function validatePicture() {
+    const message = document.getElementById('textWarningFile');
+    const files = image.files;
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+    if (files.length === 0) {
+        message.innerText = "Debe colocar una imagen"
+        return false;
+    } else {
+        if (!allowedExtensions.test(image.value)) {
+            message.innerText = "EL archivo seleccionado no es una imagen válida";
+            return false;
+        } else {
+            message.innerText = "";
+            return true;
+        }
+    }
 }
