@@ -1,23 +1,21 @@
 <?php
-class List{
+class WishList{
     public function addList($_mysqli, $_name, $_description, $_isPublic, $_userOwner){
-        $query = "CALL addList(?,?,?,?);";
+        $query = "CALL addList(?,?,?,?)";
         try {
             $stmt = $_mysqli->prepare($query);
-            $stmt->bind_param("ssss", $_name, $_description, $_isPublic, $_userOwner); // Enlaza los parámetros con bind_param
-            $stmt->execute(); // No se pasan argumentos a execute
-            $result = $stmt->get_result();
+            $stmt->bind_param("ssss", $_name, $_description, $_isPublic, $_userOwner);
+            $stmt->execute();
             $stmt->close();
-            while ($row = $result->fetch_assoc()) {
-                return $row;
-            }
+            return true;
         } catch (Exception $e) {
             $response = (object)array("status" => 500, "message" => $e->getMessage());
             echo json_encode($response);
             return null;
         }
-        return null;
+        return false;
     }
+    
 
     public function addImageList($_mysqli, $_image, $_id){
         $query = "CALL addImageList(?,?);";

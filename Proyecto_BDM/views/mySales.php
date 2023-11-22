@@ -96,7 +96,7 @@
             </section>
         </section>
     </section>
-    <script type="text/javascript" src="../scripts/scriptDashboard.js"></script>
+    <script type="text/javascript" src="../scripts/scriptSidebar.js"></script>
 </body>
 
 </html>

@@ -179,7 +179,8 @@
 		</div>
 	</section>
 
-
+	
+	<script type="text/javascript" src="./../scripts/scriptSidebar.js"></script>
 	<script type="text/javascript" src="./../scripts/scriptProfile.js"></script>
 
 </body>

@@ -522,7 +522,7 @@ BEGIN
         _quantityAvailable,
         _user 
     );
-    SELECT LAST_INSERT_ID() as `lastID`;
+    /*SELECT LAST_INSERT_ID() as `lastID`;*/
 END $$
 DELIMITER ;
 
@@ -720,7 +720,7 @@ BEGIN
         _isPublic,
         _userOwner
     );
-    SELECT LAST_INSERT_ID() as `lastID`;
+    /*SELECT LAST_INSERT_ID() as `lastID`;*/
 END $$
 DELIMITER ;
 

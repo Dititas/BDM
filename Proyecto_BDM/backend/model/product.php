@@ -2,22 +2,19 @@
 class Product{
     public function insertProduct($_mysqli, $_name, $_description, $_image, $_quotation, $_price, $_quantityAvailable, $_user)
     {
-        $query = "CALL insertUser(?,?,?,?,?,?,?,?,?,?);";
+        $query = "CALL insertProduct(?,?,?,?,?,?,?);";
         try {
             $stmt = $_mysqli->prepare($query);
             $stmt->bind_param("sssssss", $_name, $_description, $_image, $_quotation, $_price, $_quantityAvailable, $_user); // Enlaza los parámetros con bind_param
             $stmt->execute(); // No se pasan argumentos a execute
-            $result = $stmt->get_result();
             $stmt->close();
-            while ($row = $result->fetch_assoc()) {
-                return $row;
-            }
+            return true;
         } catch (Exception $e) {
             $response = (object)array("status" => 500, "message" => $e->getMessage());
             echo json_encode($response);
-            return null;
+            return false;
         }
-        return null;
+        return false;
     }
 
     public function insertImage($_mysqli, $_image, $_product)

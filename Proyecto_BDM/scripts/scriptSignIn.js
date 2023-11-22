@@ -42,7 +42,6 @@ setInterval(function(){
 			if(xhr.readyState == XMLHttpRequest.DONE){
 				if(xhr.status == 200){
 					if(xhr.response){
-						console.log(xhr.response);
 						try{
 							let res = JSON.parse(xhr.response);
 							if(res.success != true){

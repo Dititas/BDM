@@ -139,12 +139,10 @@
                             <input type="file" class="form-control-file" id="listImage">
                         </div>
                         <div class="form-group mb-2">
-                            <label for="privacySelect">Privacidad</label>
-                            <select class="form-control" id="privacySelect">
-                                <option value="1">Pública</option>
-                                <option value="0">Privada</option>
-                            </select>
-                        </div>
+							<label for="privacySelect">Privacidad</label> class="custom-checkbox">
+								<input type="checkbox" id="checkbox" onchange="toggleInput()">
+							</label>
+						</div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

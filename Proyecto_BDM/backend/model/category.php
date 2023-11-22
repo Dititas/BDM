@@ -48,7 +48,7 @@ class Category{
         return false;
     }
 
-    public function getAllCategories(){
+    public function getAllCategories($_mysqli){
         $query = "CALL getAllCategories();";
         try {
             $stmt = $_mysqli->prepare($query);

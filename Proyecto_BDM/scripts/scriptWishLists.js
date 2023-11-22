@@ -1,7 +1,8 @@
+const checkPass = document.getElementById('privacySelect');
+
 document.addEventListener("DOMContentLoaded", function () {
     var btnAdd = document.getElementById("addWL");
     var btnCancelNew = document.querySelector('#newWLModal .btn-secondary');
-
     btnAdd.addEventListener("click", function () {
         $('#newWLModal').modal('show');
     });
@@ -13,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const name = document.getElementById('listName');
     const description = document.getElementById('listDescription');
     //const listImg = document.getElementById('listImage');
-    const isPublic = document.getElementById('privacySelect');
 
     (function () {
 
@@ -24,25 +24,24 @@ document.addEventListener("DOMContentLoaded", function () {
             formData.append('name', name.value);
             formData.append('description', description.value);
             //formData.append('listImage', listImg.textContent);
-            formData.append('isPublic', isPublic.options[isPublic.selectedIndex].value);
-
+            formData.append('isPublic', checkPass.checked ? 1 : 0);
             let xhr = new XMLHttpRequest();
             xhr.open('POST', '../backend/controllers/addWishLists.php', true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == XMLHttpRequest.DONE) {
                     if (xhr.status == 200) {
-                        console.log(xhr);
                         if (xhr.response) {
                             try {
                                 let res = JSON.parse(xhr.response);
-                                if (res.success !== true) {
+                                if (res.success != true) {
                                     alert(res.msg);
+                                    return;
                                 } else {
                                     alert(res.msg);
                                     name.value = "";
                                     description.value = "";
                                     $('#newWLModal').modal('hide');
-
+                                    return;
                                 }
                             } catch (error) {
                                 console.error("Error parsing JSON: ", error);
@@ -92,4 +91,13 @@ function editList(listName, listDescription) {
 
     // Abrir el modal
     $('#editWLModal').modal('show');
+}
+
+
+function toggleInput(){
+	if(checkPass.checked){
+		return true;
+	}else{
+		return false;
+	}
 }
