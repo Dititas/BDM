@@ -25,7 +25,7 @@ CREATE TABLE `bytesandbits`.`User`(
     `user_gender`       VARCHAR(60) NOT NULL,
     `user_lastDate`     DATETIME NOT NULL DEFAULT NOW(),
     `user_isPublic`     TINYINT NOT NULL,
-    `user_isEnable`     BIT NOT NULL DEFAULT 1,
+    `user_isEnable`     TINYINT NOT NULL DEFAULT 1,
     `user_rol`          VARCHAR(60) NOT NULL,
     FOREIGN KEY (`user_rol`) REFERENCES `bytesandbits`.`rol`(`rol_name`)
 );
@@ -38,7 +38,7 @@ CREATE TABLE `bytesandbits`.`Address`(
     `address_state`         VARCHAR(60) NOT NULL,
     `address_postalCode`    VARCHAR(60) NOT NULL,
     `address_country`       VARCHAR(60) NOT NULL,
-    `address_isEnable`      BIT NOT NULL DEFAULT 1,
+    `address_isEnable`      TINYINT NOT NULL DEFAULT 1,
     `address_user`          INT NOT NULL,
     FOREIGN KEY (`address_user`) REFERENCES `bytesandbits`.`User`(`user_id`)
 );
@@ -48,11 +48,11 @@ CREATE TABLE `bytesandbits`.`Product`(
     `product_name`              VARCHAR(60) NOT NULL,
     `product_description`       TEXT NOT NULL,
     `product_image`             LONGBLOB NOT NULL,
-    `product_isApproved`        BIT NOT NULL DEFAULT 0,
-    `product_quotation`         BIT NOT NULL,
+    `product_isApproved`        TINYINT NOT NULL DEFAULT 0,
+    `product_quotation`         TINYINT NOT NULL,
     `product_price`             DECIMAL,
     `product_quantityAvailable` INT,
-    `product_isEnable`          BIT NOT NULL DEFAULT 1,
+    `product_isEnable`          TINYINT NOT NULL DEFAULT 1,
     `product_createdAt`         DATETIME NOT NULL DEFAULT NOW(),
     `product_user`              INT NOT NULL,
     FOREIGN KEY (`product_user`) REFERENCES `bytesandbits`.`User`(`user_id`)
@@ -61,7 +61,7 @@ CREATE TABLE `bytesandbits`.`Product`(
 CREATE TABLE `bytesandbits`.`Image`(
     `image_id`          INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `image_content`     LONGBLOB NOT NULL,
-    `image_isEnable`    BIT NOT NULL DEFAULT 1,
+    `image_isEnable`    TINYINT NOT NULL DEFAULT 1,
     `image_product`     INT NOT NULL,
     FOREIGN KEY (`image_product`) REFERENCES `bytesandbits`.`Product`(`product_id`)
 );
@@ -69,7 +69,7 @@ CREATE TABLE `bytesandbits`.`Image`(
 CREATE TABLE `bytesandbits`.`Video`(
     `video_id`          INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `video_content`     LONGBLOB NOT NULL,
-    `video_isEnable`    BIT NOT NULL DEFAULT 1,
+    `video_isEnable`    TINYINT NOT NULL DEFAULT 1,
     `video_product`     INT NOT NULL,
     FOREIGN KEY (`video_product`) REFERENCES `bytesandbits`.`Product`(`product_id`)
 );
@@ -79,7 +79,7 @@ CREATE TABLE `bytesandbits`.`Quotation`(
     `quotation_expirationDate`  DATETIME,
     `quotation_specifications`  TEXT NOT NULL,
     `quotation_priceAgreed`     DECIMAL(10, 10),
-    `quotation_isEnable`        BIT NOT NULL DEFAULT 1,
+    `quotation_isEnable`        TINYINT NOT NULL DEFAULT 1,
     `quotation_product`         INT NOT NULL,
     `quotation_user`            INT NOT NULL,
     FOREIGN KEY (`quotation_product`) REFERENCES `bytesandbits`.`Product`(`product_id`),
@@ -90,8 +90,8 @@ CREATE TABLE `bytesandbits`.`List`(
     `list_id`           INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `list_name`         VARCHAR(60) NOT NULL,
     `list_description`  TEXT NOT NULL,
-    `list_isPublic`     BIT NOT NULL,
-    `list_isEnable`     BIT NOT NULL DEFAULT 1,
+    `list_isPublic`     TINYINT NOT NULL,
+    `list_isEnable`     TINYINT NOT NULL DEFAULT 1,
     `list_user`         INT NOT NULL,
     FOREIGN KEY (`list_user`) REFERENCES `bytesandbits`.`User`(`user_id`)
 );
@@ -99,14 +99,14 @@ CREATE TABLE `bytesandbits`.`List`(
 CREATE TABLE `bytesandbits`.`imageList`(
     `imageList_id` 			INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `imageList_content` 	LONGBLOB NOT NULL,
-    `imageList_isEnable` 	BIT NOT NULL DEFAULT 1,
+    `imageList_isEnable` 	TINYINT NOT NULL DEFAULT 1,
     `imageList_list` 		INT NOT NULL,
     FOREIGN KEY (`imageList_list`) REFERENCES `bytesandbits`.`List`(`list_id`)
 );
 
 CREATE TABLE `bytesandbits`.`List_Product`(
     `listProduct_id`        INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `listProduct_isEnable`  BIT NOT NULL DEFAULT 1,
+    `listProduct_isEnable`  TINYINT NOT NULL DEFAULT 1,
     `listProduct_list`      INT NOT NULL,
     `listProduct_product`   INT NOT NULL,
     FOREIGN KEY (`listProduct_list`) REFERENCES `bytesandbits`.`List`(`list_id`),
@@ -117,14 +117,14 @@ CREATE TABLE `bytesandbits`.`List_Product`(
         `category_id`           INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         `category_name`         VARCHAR(60) NOT NULL,
         `category_description`  TEXT NOT NULL,
-        `category_isEnable`     BIT NOT NULL DEFAULT 1,
+        `category_isEnable`     TINYINT NOT NULL DEFAULT 1,
         `category_user`         INT NOT NULL,
         FOREIGN KEY (`category_user`) REFERENCES `bytesandbits`.`User`(`user_id`)
     );
 
     CREATE TABLE `bytesandbits`.`Category_Product`(
         `categoryProduct_id`        INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        `categoryProduct_isEnable`  BIT NOT NULL DEFAULT 1,
+        `categoryProduct_isEnable`  TINYINT NOT NULL DEFAULT 1,
         `categoryProduct_product`   INT NOT NULL,
         `categoryProduct_category`  INT NOT NULL,
         FOREIGN KEY (`categoryProduct_product`) REFERENCES `bytesandbits`.`Product`(`product_id`),
@@ -135,7 +135,7 @@ CREATE TABLE `bytesandbits`.`Rating`(
     `rating_id`         INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `rating_score`      INT NOT NULL,
     `rating_comment`    TEXT,
-    `rating_isEnable`   BIT NOT NULL DEFAULT 1,
+    `rating_isEnable`   TINYINT NOT NULL DEFAULT 1,
     `rating_product`    INT NOT NULL,
     `rating_user`       INT NOT NULL,
     FOREIGN KEY (`rating_product`) REFERENCES `bytesandbits`.`Product`(`product_id`),
@@ -145,7 +145,7 @@ CREATE TABLE `bytesandbits`.`Rating`(
 CREATE TABLE `bytesandbits`.`Cart`(
     `cart_id`           INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `cart_createdAt`    DATETIME NOT NULL DEFAULT NOW(),
-    `cart_isEnable`     BIT NOT NULL DEFAULT 1,
+    `cart_isEnable`     TINYINT NOT NULL DEFAULT 1,
     `cart_user`         INT NOT NULL,
     FOREIGN KEY (`cart_user`) REFERENCES `bytesandbits`.`User`(`user_id`)
 );
@@ -153,7 +153,7 @@ CREATE TABLE `bytesandbits`.`Cart`(
 CREATE TABLE `bytesandbits`.`Cart_Item`(
     `cartItem_id`       INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `cartItem_quantity` INT NOT NULL,
-    `cartItem_isEnable` BIT NOT NULL DEFAULT 1,
+    `cartItem_isEnable` TINYINT NOT NULL DEFAULT 1,
     `cartItem_product`  INT NOT NULL,
     `cartItem_cart`     INT NOT NULL,
     FOREIGN KEY (`cartItem_product`) REFERENCES `bytesandbits`.`Product`(`product_id`),
@@ -162,7 +162,7 @@ CREATE TABLE `bytesandbits`.`Cart_Item`(
 
 CREATE TABLE `bytesandbits`.`Conversation`(
     `conversation_id`       INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `conversation_isEnable` BIT NOT NULL DEFAULT 1,
+    `conversation_isEnable` TINYINT NOT NULL DEFAULT 1,
     `conversation_seller`   INT NOT NULL,
     `conversation_buyer`    INT NOT NULL,
     `conversation_product`  INT NOT NULL,
@@ -363,7 +363,7 @@ DROP PROCEDURE IF EXISTS `updateUserByAdmin`;
 DELIMITER $$
 CREATE PROCEDURE `updateUserByAdmin`(
     IN _id              INT,
-    IN _isEnable        BIT     
+    IN _isEnable        TINYINT     
 )
 BEGIN
     UPDATE `bytesandbits`.`User`
@@ -436,7 +436,7 @@ CREATE PROCEDURE `checkOneUserEnabled`(
     IN _identification   VARCHAR(60)
 )
 BEGIN
-    DECLARE _userIsEnable BIT;
+    DECLARE _userIsEnable TINYINT;
 
     SELECT `user_isEnable` INTO _userIsEnable
     FROM `bytesandbits`.`User`
@@ -500,7 +500,7 @@ CREATE PROCEDURE `insertProduct`(
     IN _name                VARCHAR(60),
     IN _description         TEXT,
     IN _image               LONGBLOB,
-    IN _quotation           BIT,
+    IN _quotation           TINYINT,
     IN _price               DECIMAL,
     IN _quantityAvailable   INT,
     IN _user                INT)
@@ -566,10 +566,10 @@ CREATE PROCEDURE `modifyProduct`(
     IN _name                VARCHAR(60),
     IN _description         TEXT,
     IN _image               LONGBLOB,
-    IN _quotation           BIT,
+    IN _quotation           TINYINT,
     IN _price               DECIMAL,
     IN _quantityAvailable   INT,
-    IN _isEnable            BIT,
+    IN _isEnable            TINYINT,
     IN _user                INT
     )
 BEGIN
@@ -705,7 +705,7 @@ DELIMITER $$
 CREATE PROCEDURE `addList`(
     IN _name            VARCHAR(60),
     IN _description     TEXT,
-    IN _isPublic        BIT,
+    IN _isPublic        TINYINT,
     IN _userOwner       INT
 )
 BEGIN
@@ -764,7 +764,7 @@ CREATE PROCEDURE `modifyList`(
     IN _id              INT,
     IN _name            VARCHAR(60),
     IN _description     TEXT,
-    IN _isPublic        BIT
+    IN _isPublic        TINYINT
 )
 BEGIN
     UPDATE `bytesandbits`.`List` SET
@@ -855,7 +855,7 @@ CREATE PROCEDURE `modifyCategory`(
     IN _id              INT,
     IN _name            VARCHAR(60),
     IN _description     TEXT,
-    IN _isEnable        BIT
+    IN _isEnable        TINYINT
 )
 BEGIN
     UPDATE `bytesandbits`.`Category` SET
@@ -925,7 +925,7 @@ CREATE PROCEDURE `modifyRating`(
     IN _idRating    INT,
     IN _score       INT,
     IN _comment     TEXT,
-    IN _isEnable    BIT,
+    IN _isEnable    TINYINT,
     IN _user        INT
 )
 BEGIN
