@@ -27,7 +27,7 @@ if (isset($_SESSION["AUTH"])) {
 
         <?php if (isset($_SESSION["AUTH"])) { ?>
             <li>
-                <form action="">
+                <form action="./search.php">
                     <div class="buscar">
                         <input type="text" name="search" placeholder="Buscar">
                         <button type="submit">
@@ -105,6 +105,22 @@ if (isset($_SESSION["AUTH"])) {
                     <button type="submit" class="bg-dark border-0 boton">
                         <i class='bx bx-money-withdraw'></i>
                         <span class="link_name">Mis ventas</span>
+                    </button>
+                </form>
+            </li>
+            <li>
+                <form action="./myOrders.php">
+                    <button type="submit" class="bg-dark border-0 boton">
+                        <i class='bx bx-trending-up'></i>
+                        <span class="link_name">Mis pedidos</span>
+                    </button>
+                </form>
+            </li>
+            <li>
+                <form action="./inventory.php">
+                    <button type="submit" class="bg-dark border-0 boton">
+                        <i class='bx bx-package'></i>
+                        <span class="link_name">Inventario</span>
                     </button>
                 </form>
             </li>

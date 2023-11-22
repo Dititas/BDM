@@ -36,7 +36,7 @@
     <section class="home-selection">
         <div class="home-content">
             <i class="bx bx-menu"></i>
-            <span class="text">Mis Ventas</span>
+            <span class="text">Mis Pedidos</span>
         </div>
     </section>
     <section class="dashboard-main">
@@ -44,7 +44,7 @@
             <section class="container mt-3">
 
                 <div class="table-container container flex-column">
-                    <h2>Historial de ventas</h2>
+                    <h2>Mis pedidos</h2>
                     <table class="table table-striped table-hover table-dark">
                         <thead>
                             <tr>
@@ -53,6 +53,7 @@
                                 <th scope="col">Nombre del producto</th>
                                 <th scope="col">Precio</th>
                                 <th scope="col">Fecha de compra</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,7 +66,11 @@
                                 <td>Mouse</td>
                                 <td>$249.99</td>
                                 <td>08 de julio de 2023</td>
-                                
+                                <td>
+                                    <button class="btn btn-primary border-0">
+                                        Volver a comprar
+                                    </button>
+                                </td>
                             </tr>
                             <tr>
 
@@ -76,7 +81,11 @@
                                 <td>Impresora láser</td>
                                 <td>$1800</td>
                                 <td>29 de mayo de 2023</td>
-                                
+                                <td>
+                                    <button class="btn btn-primary border-0">
+                                        Volver a comprar
+                                    </button>
+                                </td>
                             </tr>
                             <tr>
 
@@ -88,7 +97,11 @@
                                 <td>$500</td>
                                 <td>10 de diciembre de 2022</td>
 
-                                
+                                <td>
+                                    <button class="btn btn-primary border-0">
+                                        Volver a comprar
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
