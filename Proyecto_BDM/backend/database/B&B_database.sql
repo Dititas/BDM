@@ -290,6 +290,44 @@ CREATE VIEW ChatMessagesView AS
     FROM `bytesandbits`.`Message` m
     INNER JOIN `bytesandbits`.`User` u ON m.`message_sender` = u.`user_id`;
 
+
+    CREATE VIEW QuotationViewByBuyer AS
+    SELECT 
+        q.`quotation_expirationDate`,
+        q.`quotation_specifications`,
+        q.`quotation_priceAgreed`,
+        q.`quotation_isEnable`,
+        p.`product_id`,
+        p.`product_name`,
+        p.`product_image`
+    FROM `bytesandbits`.`Quotation` q
+    JOIN `bytesandbits`.`Product` p ON q.`quotation_product` = p.`product_id`;
+
+    CREATE VIEW QuotationViewBySeller AS
+    SELECT 
+        q.`quotation_expirationDate`,
+        q.`quotation_specifications`,
+        q.`quotation_priceAgreed`,
+        q.`quotation_isEnable`,
+        p.`product_id`,
+        p.`product_name`,
+        p.`product_image`,
+        u.`user_id`,
+        u.`user_userName`,
+        u.`user_image`
+    FROM `bytesandbits`.`Quotation` q
+    JOIN `bytesandbits`.`Product` p ON q.`quotation_product` = p.`product_id`
+    JOIN `bytesandbits`.`User` u ON q.`quotation_user` = u.`user_id`
+    GROUP BY u.`user_id`, p.`product_id`;
+
+    CREATE VIEW ProductViewByCategory AS
+    SELECT
+        p.`product_id`,
+        p.`product_name`,
+        p.`product_image`
+    FROM `bytesandbits`.`Product` p
+    JOIN `bytesandbits`.`Category_Product` cp ON p.`product_id` = cp.`categoryProduct_product`;
+
 /*--------------STORED PROCEDURES USER---------------------*/
 DROP PROCEDURE IF EXISTS `insertUser`;
 DELIMITER $$
