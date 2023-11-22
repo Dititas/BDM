@@ -96,5 +96,49 @@ class Product{
         return null;
     }
 
+    public function getAverageProductRatings($_mysqli, $_productId)
+    {
+        $query = "SELECT getAverageProductRatings(?) AS avgRating;";
+
+        try {
+            stmt = $_mysqli->prepare($query);
+            $stmt->bind_param("i", $_productId); 
+            $stmt->execute();
+
+            
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+
+            $stmt->close();
+
+            return $row['avgRating'];
+        } catch (Exception $e) {
+            $response = (object)array("status" => 500, "message" => $e->getMessage());
+            echo json_encode($response);
+            return null;
+        }
+    }
+
+    public function isProductInCart($_mysqli, $_userId, $_productId)
+    {
+        try {
+            $stmt = $_mysqli->prepare($query);
+            $stmt->bind_param("ii", $_userId, $_productId);
+            $stmt->execute();
+    
+            
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            
+            $stmt->close();
+    
+            return $row['isInCart'] == 1;
+        } catch (Exception $e) {
+            $response = (object)array("status" => 500, "message" => $e->getMessage());
+            echo json_encode($response);
+            return null;
+        }
+    }
+
 }
 ?>

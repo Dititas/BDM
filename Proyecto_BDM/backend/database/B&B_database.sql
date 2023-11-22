@@ -1147,6 +1147,7 @@ DELIMITER ;
 
 
 /*----------------------------------FUNCIONES--------------------------------------------*/
+DELIMITER $$
 CREATE FUNCTION averageProductRatings(_productId INT) RETURNS DECIMAL
 BEGIN
     DECLARE avgRating DECIMAL;
@@ -1154,8 +1155,10 @@ BEGIN
     FROM `bytesandbits`.`Rating`
     WHERE `rating_product` = _productId;
     RETURN COALESCE(avgRating, 0);
-END;
+END$$;
+DELIMITER;
 
+DELIMITER $$
 CREATE FUNCTION productInCart(_userId INT, _productId INT) RETURNS BOOLEAN
 BEGIN
     DECLARE isInCart BOOLEAN;
@@ -1165,8 +1168,8 @@ BEGIN
         WHERE ci.`cartItem_user` = _userId AND ci.`cartItem_product` = _productId AND ci.`cartItem_isEnable` = 1
     ) INTO isInCart;
     RETURN isInCart;
-END;
-
+END$$;
+DELIMITER;
 /*----------------------------------------TRIGGERS----------------------------------------*/
 CREATE TRIGGER disableProductOnZeroQuantity
 BEFORE UPDATE ON `bytesandbits`.`Product`
