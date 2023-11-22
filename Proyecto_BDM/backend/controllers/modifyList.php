@@ -1,20 +1,25 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require_once "../utils/dbConnection.php";
-    require_once "../model/category.php";
+    require_once "../model/wishList.php";
 
-    if (isset($_POST['name']) && isset($_POST['description']) ) {
+    if (
+        isset($_POST['id']) &&
+        isset($_POST['name']) &&
+        isset($_POST['description']) &&
+        isset($_POST['isPublic'])
+    ) {
+        $id = $_POST['id'];
         $name = $_POST['name'];
         $description = $_POST['description'];
-        session_start();
-        $loggedUser = $_SESSION['AUTH'] ?? null;
+        $isPublic = $_POST['isPublic'];
 
         $mysqli = dbConnection::connect();
-        $newCategory = new Category();
-        if ($newCategory->addCategory($mysqli, $name, $description, $loggedUser['user_id'])) {
-            $json_response = ["success" => true, "msg" => "Categoría agregada con éxito"];
+        $wishlist = new WishList();
+        if ($wishlist->modifyList($mysqli, $id, $name, $description, $isPublic)) {
+            $json_response = ["success" => true, "msg" => "Lista modificada con éxito"];
         } else {
-            $json_response = ["success" => false, "msg" => "Error al agregar la categoría"];
+            $json_response = ["success" => false, "msg" => "Error al modificar la lista"];
         }
 
         header('Content-Type: application/json');

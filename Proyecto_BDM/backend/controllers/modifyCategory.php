@@ -1,21 +1,35 @@
 <?php
-require_once "../utils/dbConnection.php";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    require_once "../utils/dbConnection.php";
+    require_once "../model/category.php";
 
-class CategoryController
-{
-    public function modifyCategory($id, $name, $description, $isEnable)
-    {
+    if (
+        isset($_POST['id']) &&
+        isset($_POST['name']) &&
+        isset($_POST['description']) &&
+        isset($_POST['isEnable'])
+    ) {
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $isEnable = $_POST['isEnable'];
+
         $mysqli = dbConnection::connect();
-        $stmt = $mysqli->prepare("CALL modifyCategory(?, ?, ?, ?)");
-        $stmt->bind_param("isss", $id, $name, $description, $isEnable);
-        
-        if ($stmt->execute()) {
-            $stmt->close();
-            return ["success" => true, "msg" => "Categoría modificada con éxito"];
+        $newCategory = new Category();
+        if ($newCategory->modifyCategory($mysqli, $id, $name, $description, $isEnable)) {
+            $json_response = ["success" => true, "msg" => "Categoría modificada con éxito"];
         } else {
-            $stmt->close();
-            return ["success" => false, "msg" => "Error al modificar la categoría"];
+            $json_response = ["success" => false, "msg" => "Error al modificar la categoría"];
         }
+
+        header('Content-Type: application/json');
+        echo json_encode($json_response);
+        exit();
+    } else {
+        $json_response = ["success" => false, "msg" => "Verifique sus datos, están corruptos"];
+        header('Content-Type: application/json');
+        echo json_encode($json_response);
+        exit();
     }
 }
 ?>

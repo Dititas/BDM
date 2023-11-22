@@ -149,3 +149,171 @@ function saveEditedCategory() {
         }
     });
 }
+
+
+
+// Agregar una categoría
+function addCategory(name, description, userOwner) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../backend/controllers/addCategory.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status == 200) {
+                if (xhr.response) {
+                    try {
+                        let res = JSON.parse(xhr.response);
+                        if (res.success !== true) {
+                            alert(res.msg);
+                        } else {
+                            alert(res.msg);
+                        }
+                    } catch (error) {
+                        console.error("Error parsing JSON: ", error);
+                    }
+                } else {
+                    console.error("Server response is empty");
+                }
+            } else {
+                console.error("Error in AJAX request: " + xhr.status);
+            }
+        }
+    }
+
+    var data = 'name=' + encodeURIComponent(name) + '&description=' + encodeURIComponent(description) + '&userOwner=' + encodeURIComponent(userOwner);
+    xhr.send(data);
+}
+
+// Agregar un producto a una categoría
+function addProductInCategory(idProduct, idCategory) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../backend/controllers/addProductInCategory.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status == 200) {
+                if (xhr.response) {
+                    try {
+                        let res = JSON.parse(xhr.response);
+                        if (res.success !== true) {
+                            alert(res.msg);
+                        } else {
+                            alert(res.msg);
+                        }
+                    } catch (error) {
+                        console.error("Error parsing JSON: ", error);
+                    }
+                } else {
+                    console.error("Server response is empty");
+                }
+            } else {
+                console.error("Error in AJAX request: " + xhr.status);
+            }
+        }
+    }
+
+    var data = 'idProduct=' + encodeURIComponent(idProduct) + '&idCategory=' + encodeURIComponent(idCategory);
+    xhr.send(data);
+}
+
+// Modificar una categoría
+function modifyCategory(id, name, description, isEnable) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../backend/controllers/modifyCategory.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status == 200) {
+                if (xhr.response) {
+                    try {
+                        let res = JSON.parse(xhr.response);
+                        if (res.success !== true) {
+                            alert(res.msg);
+                        } else {
+                            alert(res.msg);
+                        }
+                    } catch (error) {
+                        console.error("Error parsing JSON: ", error);
+                    }
+                } else {
+                    console.error("Server response is empty");
+                }
+            } else {
+                console.error("Error in AJAX request: " + xhr.status);
+            }
+        }
+    }
+
+    var data = 'id=' + encodeURIComponent(id) + '&name=' + encodeURIComponent(name) + '&description=' + encodeURIComponent(description) + '&isEnable=' + encodeURIComponent(isEnable);
+    xhr.send(data);
+}
+
+// Obtener todas las categorías
+function getAllCategories() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../backend/controllers/getAllCategories.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status == 200) {
+                if (xhr.response) {
+                    try {
+                        let res = JSON.parse(xhr.response);
+                        if (res.success !== true) {
+                            alert(res.msg);
+                        } else {
+                            // Handle the response as needed
+                            console.log(res.categories);
+                        }
+                    } catch (error) {
+                        console.error("Error parsing JSON: ", error);
+                    }
+                } else {
+                    console.error("Server response is empty");
+                }
+            } else {
+                console.error("Error in AJAX request: " + xhr.status);
+            }
+        }
+    }
+
+    xhr.send();
+}
+
+// Obtener productos por categoría
+function getProductByCategory(idCategory) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../backend/controllers/getProductByCategory.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status == 200) {
+                if (xhr.response) {
+                    try {
+                        let res = JSON.parse(xhr.response);
+                        if (res.success !== true) {
+                            alert(res.msg);
+                        } else {
+                            // Handle the response as needed
+                            console.log(res.products);
+                        }
+                    } catch (error) {
+                        console.error("Error parsing JSON: ", error);
+                    }
+                } else {
+                    console.error("Server response is empty");
+                }
+            } else {
+                console.error("Error in AJAX request: " + xhr.status);
+            }
+        }
+    }
+
+    var data = 'idCategory=' + encodeURIComponent(idCategory);
+    xhr.send(data);
+}

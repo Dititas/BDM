@@ -98,7 +98,7 @@ class Product{
         $query = "SELECT getAverageProductRatings(?) AS avgRating;";
 
         try {
-            stmt = $_mysqli->prepare($query);
+            $stmt = $_mysqli->prepare($query);
             $stmt->bind_param("i", $_productId); 
             $stmt->execute();
 
