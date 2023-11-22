@@ -121,6 +121,7 @@ class Product{
 
     public function isProductInCart($_mysqli, $_userId, $_productId)
     {
+        $query = "SELECT productInCart(?, ?) AS isInCart;";
         try {
             $stmt = $_mysqli->prepare($query);
             $stmt->bind_param("ii", $_userId, $_productId);
